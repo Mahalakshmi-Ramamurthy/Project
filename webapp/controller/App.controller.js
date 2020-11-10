@@ -3,7 +3,7 @@ sap.ui.define([
 		"sap/ui/model/json/JSONModel"
 	], function (BaseController, JSONModel) {
 		"use strict";
-
+ 
 		return BaseController.extend("AgentPortal_Testing.AgentPortal_Testing.controller.App", {
 
 			onInit : function () {
