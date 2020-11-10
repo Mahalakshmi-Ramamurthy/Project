@@ -1,0 +1,32 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" >
+      <Dialog title ="Add port"  class="sapUiSizeCompact"> 
+    <Table  mode="MultiSelect" id="addportservices" selectionChange="LinkValue" growing="true" growingThreshold="100">
+		<columns>
+			<Column width="13rem">
+				<Text text="Service Name" />
+			</Column>
+			<Column width="5rem">
+				<Text text="Price" />
+			</Column>
+			<Column visible="false">
+				<Text text="Service flag" />
+			</Column>
+			<Column visible="false">
+				<Text text="Service code" />
+			</Column>
+				<Column width="5rem">
+				<Text text="Converted Currency" />
+			</Column>
+		 
+		</columns>
+	
+	</Table>
+	<buttons>
+   
+   <Button text = "Add" press = "onaddportserv" type = "Accept" />
+   <Button text = "Cancel" press = "cancelportserv" type = "Reject" />
+   </buttons>
+	  </Dialog>
+	  
+</core:FragmentDefinition>

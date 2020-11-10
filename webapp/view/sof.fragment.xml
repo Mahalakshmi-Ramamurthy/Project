@@ -1,0 +1,315 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form" >
+ 
+ 		<l:ResponsiveSplitter  defaultPane="default"  >
+		<l:PaneContainer>
+			<l:SplitPane   requiredParentWidth="920"  id="default2" > 
+			<Panel   height="100%">
+						
+	
+			<Table id="idOperationTabel1sof" items="{/StatementofFacts}" fixedLayout="false"  
+			mode="SingleSelectMaster" sticky="ColumnHeaders" 
+			selectionChange="ListPress" updateFinished='render'> 
+					<headerToolbar>
+			<Toolbar height="3rem">
+				<Title  id="titlemysof" text="Item List"  class="bold" />
+				<ToolbarSpacer />
+				<ToolbarSpacer />
+				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+				
+				  <!--  <Link press="Customers" id="Customersof" text="Customers /"/>
+				    <Link press="Vessellist" id="Vessellistsof" text="Vessel History"/>-->
+		    	
+			 <SearchField width="12rem" placeholder="Search" liveChange="onSearch2" />
+			 	<Button icon="sap-icon://refresh" tooltip="Refreshhistory" press="refresh2"/>
+					<Button icon="sap-icon://filter" tooltip="Filterhistory" press="filterCategories2"/>
+				
+				<Button
+							icon="sap-icon://sort"
+							tooltip="Sort Categories"
+							press="sortfn2"/>
+							
+				
+			</Toolbar>
+		</headerToolbar>
+					<columns >
+							<Column  width="7rem" >
+								<Label text="Customer ID" design="Bold" />
+							</Column>
+							
+							<!--<Column  width="15%"
+							    minScreenWidth="Small"
+							 	demandPopin="true" 
+							 	>
+							<Label text="Customer Name" design="Bold"  />
+							</Column>-->
+							
+							<Column width="7rem"
+							    minScreenWidth="Small"
+							 	demandPopin="true" 
+							 	>
+							<Label text="Vessel Name" design="Bold"  />
+							</Column>
+							
+							<Column 
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+								
+							<Label text="IMO Number" design="Bold" />
+							</Column>
+							
+							
+								<Column  
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+								
+							<Label text="D/A Number" design="Bold" />
+							</Column>
+						
+							</columns>
+							
+							<items>
+						<ColumnListItem id="idOperIncrementTable1sof" type="Navigation"    >
+							<cells> 
+							  <Text text="{CUSTOMERID}"   />
+							<!--   <Text text="{CUSTOMERNAME}"/>-->
+							     <Text text="{VESSELNAME}" />
+							 <Text text="{IMO}" />
+							  <Text text="{DANUMBER}"/>
+							   <!--<Text text="{VESSELTYPE}"/>-->
+								
+								 </cells>
+						</ColumnListItem>
+					</items>
+					</Table>
+					
+					</Panel>
+			</l:SplitPane>
+			
+			<l:SplitPane >
+					<Panel>
+						
+			       	<content>
+					<HBox class="sapUiSizeCompact bg" >
+		  <form:SimpleForm id="SSform14"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title=""
+			labelSpanXL="2"
+			labelSpanL="2"
+			labelSpanM="2"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="0"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false"
+			class="sapUiSizeCompact">
+		  	
+			<form:content>
+				<HBox>
+	 	<FlexBox 
+					
+					alignItems="Start"
+					justifyContent="Start"
+					>
+	 			<items>
+	 				<VBox class="sapUiLargeMarginEnd">
+	 				<Label    id="hiscusname" text="Royal Dutch Shell"   class="name sapUiTinyMarginBottom" />
+	 		<ObjectAttribute id="hiscusid" title="Customer ID"  text="V16751234" class="datebold sapUiTinyMarginBottom" active="true" />
+		 
+			</VBox>
+		</items>
+				</FlexBox>
+	   
+    
+      <FlexBox
+					class="sapUiSmallMarginBegin"
+					alignItems="Start"
+					justifyContent="Start">
+      			<items>
+      				<VBox class="sapUiSmallMarginBegin">
+      				<ObjectAttribute  id="hisimo" title="IMO Number" text="IMO287631" class="sapUiTinyMarginBottom"  active="true"/>
+						<ObjectAttribute id="hisves"  title="Vessel Name" text="423424534" class="sapUiTinyMarginBottom" active="true" />
+				<ObjectStatus  id="hisport" title="Port Name" text="Al Rayyan Port" state="Warning" class="sapUiTinyMarginBottom"   />
+			
+					
+					
+				
+	</VBox>
+		
+		</items>
+				</FlexBox>
+				
+	    </HBox>
+	    	</form:content>
+	    	
+	    	 </form:SimpleForm>
+	    	 </HBox>
+					
+<IconTabBar
+	
+		select="cargotabbar"
+		id="cargotabbar"	
+	>
+	
+		<items>	
+		
+			<IconTabFilter id="sof1f1" text="1st Cargo" key="1stcargoss" visible="false" >
+				
+					<Table id="sof1" growing="true"
+		growingThreshold="9"
+		growingScrollToLoad="false" >
+					
+						<columns> 
+							<Column hAlign="Left"   >
+								<Label text="Events" design="Bold"  />
+							</Column>
+							
+							<Column 
+							    minScreenWidth="Small"
+							 	demandPopin="true" 
+							 	>
+							<Label text="Date" design="Bold" />
+							</Column>
+							
+							<Column 
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+								
+							<Label text="Local Time(GMT +3)" design="Bold" />
+							</Column>
+						
+							
+							</columns>
+							
+					
+					</Table>
+				</IconTabFilter>
+				
+				
+		<IconTabFilter id="sof2f2" text="1st Cargo" key="1stcargo" >
+				
+					<Table id="sofdetails" growing="true"
+		growingThreshold="9"
+		growingScrollToLoad="false" >
+					
+						<columns> 
+							<Column hAlign="Left"   >
+								<Label text="Eventss" design="Bold"  />
+							</Column>
+							
+							<Column 
+							    minScreenWidth="Small"
+							 	demandPopin="true" 
+							 	>
+							<Label text="Dates" design="Bold" />
+							</Column>
+							
+							<Column 
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+								
+							<Label text="Local Time(GMT +3)s" design="Bold" />
+							</Column>
+						
+							
+							</columns>
+							
+					
+					</Table>
+						<Table id="dummy" > 
+					
+						<columns> 
+							<Column hAlign="Center"   >
+								<Label text="Remarks" design="Bold"  />
+							</Column>
+							</columns>
+							
+							<items>
+						<ColumnListItem>
+							<cells> 
+							     <TextArea rows="5" id="remarks" cols="70" />
+								
+								 
+								 </cells>
+						</ColumnListItem>
+					</items>
+					</Table>
+					
+					</IconTabFilter>
+					
+					<IconTabFilter text="2nd Cargo" key="2ndcargo" >
+						
+					<Table id="sofdetails2"  growing="true" growingThreshold="9" growingScrollToLoad="false"  > 
+					
+						<columns> 
+							<Column hAlign="Left"   >
+								<Label text="Events" design="Bold"  />
+							</Column>
+							
+							<Column 
+							    minScreenWidth="Small"
+							 	demandPopin="true" 
+							 	>
+							<Label text="Date" design="Bold" />
+							</Column>
+							
+							<Column 
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+								
+							<Label text="Local Time(GMT +3)" design="Bold" />
+							</Column>
+						</columns>
+					
+					
+					</Table>
+					
+					</IconTabFilter>
+					<IconTabFilter text="3rd Cargo" key="3rdcargo" >
+							<Table id="sofdetails3" growing="true"
+		growingThreshold="9"
+		growingScrollToLoad="false" > 
+					
+						<columns> 
+							<Column hAlign="Left"   >
+								<Label text="Events" design="Bold"  />
+							</Column>
+							
+							<Column 
+							    minScreenWidth="Small"
+							 	demandPopin="true" 
+							 	>
+							<Label text="Date" design="Bold" />
+							</Column>
+							
+							<Column 
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+								
+							<Label text="Local Time(GMT +3)" design="Bold" />
+							</Column>
+						
+							
+							</columns>
+
+					</Table>
+					</IconTabFilter>
+					</items>
+					</IconTabBar>
+					</content>
+			</Panel>
+				</l:SplitPane>
+			
+		</l:PaneContainer>
+	</l:ResponsiveSplitter>
+</core:FragmentDefinition>

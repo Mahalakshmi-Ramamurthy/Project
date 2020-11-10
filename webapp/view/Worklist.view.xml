@@ -1,0 +1,1489 @@
+<mvc:View
+	controllerName="AgentPortal_Testing.AgentPortal_Testing.controller.Worklist"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:ui="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:f="sap.ui.layout.form" 
+	xmlns:l="sap.ui.layout"
+	xmlns:tnt="sap.tnt"
+	xmlns:u="sap.ui.unified"
+xmlns:uxap="sap.uxap"
+ xmlns:vm="sap.ui.comp.variants"
+	xmlns:viz="sap.viz.ui5.controls"
+xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+xmlns:viz.data="sap.viz.ui5.data"
+xmlns:ch="sap.suite.ui.microchart"
+xmlns:rules="sap.rules.ui"
+ 
+ 
+	xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<semantic:SemanticPage
+		id="page"
+		headerPinnable="false"
+		toggleHeaderOnTitleClick="false"
+		preserveHeaderStateOnScroll="false"
+		showFooter="true">
+
+		<semantic:headerContent>
+					
+		 <IconTabBar
+		
+		 
+		select="handleIconMainTabBarSelect"
+		id="idIconTabBarMainnotif"		
+		expanded="{device>/isNoPhone}"
+		class="bck">
+	
+		<items>
+		    
+		  
+			 <IconTabFilter text="Customers" key="Customers">
+			 	 <!--   <f:SimpleForm id="SSform1"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title=""
+			labelSpanXL="4"
+			labelSpanL="4"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="true"
+			emptySpanXL="0"
+			emptySpanL="0"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="3"
+			columnsL="3"
+			columnsM="3"
+			singleContainerFullSize="false"
+			class="sapUiSizeCompact">
+			<f:content>
+	<core:Title text="" class="coretitle"/>
+        <l:FixFlex  vertical="false">
+		<l:fixContent>
+		<ObjectAttribute id="totalcusName" active="true"  title="Total Customer" text="153" class="sapUiTinyMargin" />
+			<ObjectAttribute id="totvessel" active="true"   title="Total Vessels" text="124" class="sapUiTinyMargin" />
+		
+		</l:fixContent> 
+	    </l:FixFlex>
+   
+	   <core:Title text="" class="coretitle"/>
+	    <l:FixFlex  vertical="false">
+		<l:fixContent>
+				<Label text="Search by Vessel type"/>
+					<ComboBox id="multicombo2"  placeholder="Select" class="sapUiSizeCompact" selectionChange="onSelectionChange" width="80%">
+               <items>
+               <core:Item key="LNG Vessels" text="LNG Vessels" />
+            <core:Item key="Product/Chemical Tankers and SPM" text="Product/Chemical Tankers and SPM" />
+            <core:Item key="Cargo" text="Cargo" />
+            <core:Item key="Dry Docking" text="Dry Docking" />
+            <core:Item key="Offshore Support Vessel"  text="Offshore Support Vessel" />
+               </items>
+               </ComboBox>
+
+			
+		</l:fixContent> 
+	    </l:FixFlex> 
+	 <core:Title text="" class="coretitle"/>    
+	<l:FixFlex  vertical="false">
+		<l:fixContent>
+		 
+		 	<ObjectAttribute    title="Last Changed" text="June 30,2018" class="sapUiTinyMargin" />
+		 		<ObjectAttribute    title="Last Changed by" text="Super Agent" class="sapUiTinyMargin" />
+		
+		
+			
+		</l:fixContent> 
+	    </l:FixFlex>       -->
+       
+		  <!-- </f:content>
+		</f:SimpleForm>	-->
+		
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 <IconTabBar
+		  selectedKey="informationtab1"
+		select="handleIconTabBarSelect1"
+		id="idIconTabBarnotif"		
+		expanded="{device>/isNoPhone}">
+		<items>
+		    
+		  
+			 <IconTabFilter
+			  id="itb1"
+				text="Vessel List"
+				class="bold"
+				key="informationtab1">
+			 	
+			
+			  	<Panel id="panel1" visible="true">
+			  			<headerToolbar>
+			<Toolbar height="3rem">
+				<Title  id="itemlist" text="" class="bold" />
+				
+				<RadioButtonGroup columns="5" select="radiobuttonselect"   >
+				<buttons>
+					<RadioButton id="RB3-0u" text="All"/>
+					<RadioButton id="RB3-1u" text="Pending"/>
+					<RadioButton id="RB3-2k" text="Approved"/>
+				
+				</buttons>
+			</RadioButtonGroup>
+			<ToolbarSpacer />
+				<ToolbarSpacer />
+					<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+				    <Link press="Customers" id="Customers" text="Customers" visible='false'/>
+				    <Link press="Vessellist" id="Vessellist" text="/ Vessel list" visible='false'/>
+		    
+			 <SearchField width="12rem" placeholder="Search" id="Search" liveChange="onSearchcustomer" />
+			 <Button icon="sap-icon://refresh" tooltip="Refresh" press="refreshcustomerlist"/>
+				<Button icon="sap-icon://filter" tooltip="Filter" press="customerfilterCategories"/>
+				
+				<Button
+							icon="sap-icon://sort"
+							tooltip="Sort Categories"
+							press="sortfn"/>
+							
+				
+			</Toolbar>
+		</headerToolbar>
+			 		<content>
+			 <Table id="idOperationTabel1" items="{/MyFleet}"  fixedLayout="false" class="sapFSemanticPageAlignContent" updateFinished="onmyfleetfinished"  > 
+			
+			
+						<columns >
+							<Column  >
+								<Label text="Customer ID" design="Bold" />
+							</Column>
+							
+							<Column 
+							    minScreenWidth="Small"
+							 	demandPopin="true" 
+							 	>
+							<Label text="Customer Name" design="Bold"  />
+							</Column>
+							
+							<Column 
+							    minScreenWidth="Small"
+							 	demandPopin="true" 
+							 	>
+							<Label text="Vessel Name" design="Bold"  />
+							</Column>
+							
+							<Column 
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+								
+							<Label text="IMO Number" design="Bold" />
+							</Column>
+							
+							
+								<Column  
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+								
+							<Label text="Vessel Type" design="Bold" />
+							</Column>
+								<Column  
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+								
+							<Label text="Vessel Status" design="Bold" />
+							</Column>
+							
+							<!--<Column  hAlign="Center"
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+			 				<Label text="Estimate Time Arrival" design="Bold" />
+							</Column>
+			 				-->
+			  				</columns>
+			 				<items>
+						<ColumnListItem id="idOperIncrementTable1" type="Navigation" press="TableLinkPress">
+							<cells> 
+							   
+							  <ObjectNumber id="il5" number="{CUSTOMERID}"/>
+							   <Text text="{CUSTOMERNAME}"/>
+							     <Text text="{VESSELNAME}" />
+							 <Text text="{IMO}" />
+							   <Text text="{VESSELTYPE}"/> 
+							    <ObjectStatus text="{VESSELSTATUS}"  state="{parts:[{path: 'VESSELSTATUS'}], formatter:'.mystatus'}"/>
+							     
+								
+								 </cells>
+						</ColumnListItem>
+					</items>
+					</Table>
+               </content>
+			 	</Panel>
+			 	
+			 	<Panel id="panel2" visible="false">
+			 	<content>
+			 		<l:ResponsiveSplitter id="Rsplitter1"   >
+		<l:PaneContainer>
+			
+			<l:SplitPane   requiredParentWidth="400" >
+			<Panel   height="100%">
+			<Table class="sapUiSizeCompact" id="idTableMyOrders" inset="false" items="{/MyFleet}"  > 
+		
+	         	<columns>
+				<Column>
+					<Label text="Ship/ Vessel Name" design="Bold" textAlign="Center"/>
+				</Column>
+				</columns> 
+				<items>   
+				<ColumnListItem id="idOperIncrementTable11" type="Navigation" press="onmyfleettablePress" >
+							<cells> 
+							     <Text text="{VESSELNAME}" />
+							     </cells> 
+				</ColumnListItem>
+				</items>
+				<layoutData>
+				<l:SplitterLayoutData size="200px" /></layoutData>
+			</Table>
+			</Panel>
+	
+	</l:SplitPane>
+	<l:PaneContainer  >
+		<l:SplitPane requiredParentWidth="400" >
+ <Panel>
+			<headerToolbar>
+			<Toolbar height="2rem" class="sapUiSizeCompact" >
+				<Title text="Edit Vessel"/>
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 					<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 				<Breadcrumbs >
+				    <Link press="link1" id="linkid1ds" text="My Fleet" visible="false"/>
+				    <Link press="link2" id="linkid2ds" text="Edit Vessel" visible="false"/>
+		    	</Breadcrumbs>
+		    		</Toolbar>
+		    				</headerToolbar>
+			<content>
+    		<f:Form id="FormDisplay480_12120Dual" editable="true" >
+			<f:layout>
+				<f:ResponsiveGridLayout
+			  	class="sapUiSizeCompact"
+					labelSpanXL="4"
+					labelSpanL="4"
+					labelSpanM="12"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="0"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="2"
+					columnsM="2"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement label="Ship/Vessel Name" >
+							<f:fields>
+				   <Input id ="ip1" value="{/VESSELNAME}" placeholder="Enter"	editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<!--	<f:FormElement label="Disbursement Account Number">
+							<f:fields>
+				<Input id ="ipp1" value="{/DANUMBER}" editable="false" />
+			
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="PortName">
+							<f:fields>
+				<ComboBox id ="ipp2" value="{/PORTNAME}" editable="false" placeholder="Select" >
+				  <items>
+              <core:Item key="t0d" text="Ras Laffan port" />
+              <core:Item key="t1d" text="Al Rayyan terminal" />
+              <core:Item key="t1d1" text="Al Shaheen terminal" />
+              <core:Item key="t2d" text="Halul port" />     
+              <core:Item key="t3d" text="Mesaieed port" />  
+              <core:Item key="t4d" text="Hamad port" />  
+              <core:Item key="t5d" text="Al Ruwais port" />  
+              <core:Item key="t6d" text="Doha port" />  
+              <core:Item key="t7d" text="Heli port" />  
+              </items>
+               </ComboBox>
+			
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Estimate Time Arrival">
+							<f:fields>
+				<DateTimePicker id ="ipp3" value="{/ETA}" placeholder="Select Date/Time" editable="false"  />
+			
+							</f:fields>
+						</f:FormElement>-->
+						
+						<f:FormElement label="International Maritime Organization">
+							<f:fields>
+				<Input id ="ip2" value="{/IMO}" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement label="Maritime Mobile Service Identity">
+							<f:fields>
+				<Input id ="ip3" value="{/MMSI}"  editable="false" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Call Sign">
+							<f:fields>
+				<Input id ="ip4" value="{/CALLSIGN}" placeholder="Select" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement label="Flag">
+							<f:fields>
+				<Input id ="ip5" value="{/FLAG}" placeholder="Select" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement label="Vessel Type" >
+							<f:fields>
+				<Input id ="ip6" value="{/VESSELTYPE}" placeholder="Select" editable="false" required="true" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement label="Classification">
+							<f:fields>
+				<Input id ="ip7" value="{/CLASSIFICATION}" placeholder="Select" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement label="P &amp; I Club">
+							<f:fields>
+				<Input id ="ip8" value="{/PICLUB}" placeholder="Select" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement label="Vessel Owner's Name">
+							<f:fields>
+				<Input id ="ip9" value="{/VESSELOWNER}" placeholder="Select" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement label="Vessel Owner's email address">
+							<f:fields>
+				<Input id ="ip91" value="{/OWNEREMAILID}" placeholder="Select" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+					<f:FormElement label="Vessel Charterer's Name">
+							<f:fields>
+				<Input id ="ip10" value="{/CHARTERERNAME}" placeholder="Select" editable="false" />
+							</f:fields>
+						</f:FormElement>
+				<!--	
+						
+					</f:formElements>
+				</f:FormContainer>
+	<f:FormContainer>
+					<f:formElements>
+					-->
+						
+					
+						
+						<f:FormElement label="Vessel Charterer's email address">
+							<f:fields>
+				<Input id ="ip101" value="{/CHARTEREREMAILID}" placeholder="Select" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement label="Summer’s Deadweight Tonnage" >
+							<f:fields>
+				   <Input id ="ip11" value="{/SWDT}" placeholder="Select" editable="false"  />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Net Registered Tonnage" >
+							<f:fields>
+				<Input id ="ip12" value="{/NRT}" placeholder="Select" editable="false"/>
+			
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Gross Registered Tonnage" >
+							<f:fields>
+				<Input id ="ip13" value="{/GRT}" placeholder="Select" editable="false"   />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Length Overall" >
+							<f:fields>
+				<Input id ="ip14" value="{/LOA}"  placeholder="Select" editable="false"  />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement label="Year Built">
+							<f:fields>
+				<Input id ="ip15" value="{/YEARBUILT}" placeholder="Select" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement label="Vessel Email Address">
+							<f:fields>
+				<Input id ="ip16" value="{/VESSELEMAILID}" placeholder="Select" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement label="Vessel Phone No.">
+							<f:fields>
+				<Input id ="ip17" value="{/VESSELPHONENUM}" placeholder="Select" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement label="Captain Name">
+							<f:fields>
+				<Input id ="ip18" value="{/CAPTAINNAME}" placeholder="Select" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement label="Others">
+							<f:fields>
+				<Input id ="ip19" value="{/OTHERS}" placeholder="Select" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement label="Remarks">
+							<f:fields>
+				<Input id ="ip20" value="{/REMARKS}" placeholder="Select" editable="false" />
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+  	</content>
+  	</Panel>
+    </l:SplitPane>
+	</l:PaneContainer>
+
+	
+	</l:PaneContainer>	
+	</l:ResponsiveSplitter>	
+			 		
+			 	</content>
+			 	</Panel>
+			 	
+			 		
+			 	<Panel id="panel3" visible="false">
+			 			<headerToolbar>
+			<Toolbar height="2rem" class="sapUiSizeCompact" >
+				<Title text="Add Vessel"/>
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 					<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 			
+				    <Link press="link1" id="linkid11" text="Customers"/>
+				    <Link press="linkadd" id="linkid21" text=" / Add Vessel"/>
+		    
+		    		</Toolbar>
+		    	</headerToolbar>
+			 	<content>
+			 		 <f:Form id="FormDisplay480_12120Dual1"
+    	editable="true" >
+    
+			<f:layout>
+				<f:ResponsiveGridLayout
+				
+				class="sapUiSizeCompact"
+					labelSpanXL="4"
+					labelSpanL="4"
+					labelSpanM="12"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="0"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="2"
+					columnsM="2"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						
+						<f:FormElement  >
+							
+				<RadioButton id="newcustomer" select="newcustomer" groupName="GroupA" text="New Customer ID :" />
+			
+							<f:fields>
+							
+				   <Input  id ="customerid" placeholder="Enter"  value="{json>name}" />
+							</f:fields>
+						</f:FormElement>
+					
+					<f:FormElement label="" >
+							<f:fields>
+				  
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement label="" >
+							<f:fields>
+				  
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement label="" >
+							<f:fields>
+				  
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement label="" >
+							<f:fields>
+				  
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement label="" >
+							<f:fields>
+				  
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement label="" >
+							<f:fields>
+				  
+							</f:fields>
+						</f:FormElement>
+					
+							<f:FormElement id ="new1" label="IMO Number" >
+							<f:fields>
+				   <Input id ="imonumber" placeholder="Enter" required="true" value="{json>name}" />
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement id ="new2" label="Ship/Vessel Name" >
+							<f:fields>
+				   <Input id ="op1" placeholder="Enter"  value="{json>name}" />
+							</f:fields>
+						</f:FormElement>
+						
+					<f:FormElement id ="new8" label="Flag">
+							<f:fields>
+				<Input id ="op7" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement id ="new6" label="Maritime Mobile Service Identity" visible="false">
+							<f:fields>
+				<DatePicker id ="ipp3" value="{/ETA}" placeholder="Select Date/Time"   />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement id ="new7" label="Call Sign">
+							<f:fields>
+				<Input id ="op6" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+					
+						
+						<f:FormElement id ="new9" label="Vessel Type">
+							<f:fields>
+				<Input id ="op8" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement  id="new17" label="Net Registered Tonnage" >
+							<f:fields>
+				<Input id ="op12" placeholder="Enter" required = "true"  />
+			
+							</f:fields>
+						</f:FormElement>
+						
+						
+					
+						<f:FormElement  id="new18" label="Gross Registered Tonnage" >
+							<f:fields>
+				<Input id ="op13" placeholder="Enter" required = "true" />
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement id="new16" label="Summer’s Deadweight Tonnage" >
+							<f:fields>
+				   <Input id ="op11" placeholder="Enter" required = "true" />
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement id="new19" label="Length Overall" >
+							<f:fields>
+				<Input id ="op14" placeholder="Enter"  />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement id="new20" label="Year Built">
+							<f:fields>
+				<Input id ="op15" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement id="new21" label="Vessel Phone Number" >
+							<f:fields>
+				<Input id ="op16" placeholder="Enter"   />
+							</f:fields>
+						</f:FormElement>
+						
+						
+						
+							<!-- Existing Customer Left Side -->
+		
+			<f:FormElement id ="exist1" visible="false" label="IMO Number" >
+							<f:fields>
+				   <Input id ="ex1" placeholder="Enter"  required="true" value="" editable="false"/>
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement id ="exist2" visible="false" label="Ship/Vessel Name" >
+							<f:fields>
+				   <Input id ="ex2" placeholder="Enter"  value="{json>name}" editable="false"/>
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement id ="exist8" visible="false" label="Flag">
+							<f:fields>
+				<Input id ="ex8" placeholder="Enter" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement id ="exist7" visible="false" label="Call Sign">
+							<f:fields>
+				<Input id ="ex7" placeholder="Enter" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+					
+						
+						<f:FormElement id ="exist9" visible="false" label="Vessel Type">
+							<f:fields>
+				<Input id ="ex9" placeholder="Enter" editable="false" />
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement  id="exist17" visible="false" label="Net Registered Tonnage" >
+							<f:fields>
+				<Input id ="ex17" placeholder="Enter"  editable="false" />
+			
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement  id="exist18" visible="false" label="Gross Registered Tonnage" >
+							<f:fields>
+				<Input id ="ex18" placeholder="Enter"  editable="false" />
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement id="exist16" visible="false" label="Summer’s Deadweight Tonnage" >
+							<f:fields>
+				   <Input id ="ex16" placeholder="Enter" required="true" editable="false" />
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement id="exist19" visible="false" label="Length Overall" >
+							<f:fields>
+				<Input id ="ex19" placeholder="Enter"  editable="false"/>
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement id="exist20" visible="false" label="Year Built">
+							<f:fields>
+				<Input id ="ex20" placeholder="Enter" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement id="exist21" visible="false" label="Vessel Phone Number" >
+							<f:fields>
+				<Input id ="ex21" placeholder="Enter"  editable="false"/>
+							</f:fields>
+						</f:FormElement>
+						
+						
+							</f:formElements>
+						
+				
+				</f:FormContainer>
+	<f:FormContainer>
+					<f:formElements>
+								<f:FormElement><RadioButton id="existingcustomerid" select="existingcustomerid" groupName="GroupA" text="Existing Customer ID :" />
+							<f:fields>
+		<!--	
+			  <ComboBox showSecondaryValues= "true" id="existcus" items="{/MyFleet}" selectionChange="existcustomer" editable="false"> 
+  <items> 
+  <core:Item id="existcustomerid" text="{CUSTOMERID}" additionalText = "{IMO}"/> 
+  </items> 
+  </ComboBox> -->
+  
+  	<ComboBox
+				showSecondaryValues= "true"
+				items="{
+					path: '/MyFleet'
+				}" selectionChange="existcustomer" editable="false" id="existcus">
+				<core:ListItem text="{CUSTOMERID}" additionalText = "{IMO}"/>
+			</ComboBox>
+			
+							</f:fields>
+						</f:FormElement>
+					
+					<f:FormElement label="" >
+							<f:fields>
+				  
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement label="" >
+							<f:fields>
+				  
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement label="" >
+							<f:fields>
+				  
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement label="" >
+							<f:fields>
+				  
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement label="" >
+							<f:fields>
+				  
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement label="" >
+							<f:fields>
+				  
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement id="new22" label="Vessel Email Address" >
+							<f:fields>
+				<Input id ="op16i" placeholder="Enter"   />
+							</f:fields>
+						</f:FormElement>
+					
+						
+						<f:FormElement id ="new10" label="Classification">
+							<f:fields>
+				<Input id ="op9" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement id ="new11" label="P &amp; I Club">
+							<f:fields>
+				<Input id ="op9i" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement id ="new12" label="Vessel Owner's Name">
+							<f:fields>
+				<Input id ="op10" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement id ="new13" label="Vessel Owner's Email Address">
+							<f:fields>
+				<Input id ="Emailadd" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement id="new24" label="Captain Name">
+							<f:fields>
+				<Input id ="op18" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement id="new14" label="Vessel Charterer's Name">
+							<f:fields>
+				<Input id ="charname" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+								<f:FormElement id="new15" label="Vessel Charterer's Email address">
+							<f:fields>
+				<Input id ="op10i" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement id="new25" label="Others">
+							<f:fields>
+				<Input id ="op19" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement id="new26" label="Remarks">
+							<f:fields>
+				<Input id ="op20" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+	
+					<!--	<f:FormElement id ="exist3" visible="false" label="Disbursement Account Number" >
+							<f:fields>
+				<Input id ="ex3" placeholder="Enter" editable="false"/>
+			
+							</f:fields>
+						</f:FormElement>-->
+					<!--	<f:FormElement id ="exist4" visible="false" label="Port Name">
+							<f:fields>
+				<Input id ="ex4"  placeholder="Enter" editable="false" />
+							</f:fields>
+						</f:FormElement>-->
+				<!--		<f:FormElement id ="exist5" visible="false" label="Estimate Time Arrival">
+							<f:fields>
+				<Input id ="ex5" placeholder="Enter" editable="false" />
+							</f:fields>
+						</f:FormElement>-->
+						
+						<f:FormElement id ="exist6" visible="false" label="Maritime Mobile Service Identity">
+							<f:fields>
+				<DatePicker id ="ex6" value="{/ETA}" editable="false" placeholder="Select Date/Time"   />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement id="exist22" visible="false" label="Vessel Email Address" >
+							<f:fields>
+				<Input id ="ex22" placeholder="Enter" editable="false"/>
+							</f:fields>
+						</f:FormElement>
+					
+						
+						<f:FormElement id ="exist10" visible="false" label="Classification">
+							<f:fields>
+				<Input id ="ex10" placeholder="Enter" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement id ="exist11" visible="false" label="P &amp; I Club">
+							<f:fields>
+				<Input id ="ex11" placeholder="Enter" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement id ="exist12" visible="false" label="Vessel Owner's Name">
+							<f:fields>
+				<Input id ="ex12" placeholder="Enter" editable="false"/>
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement id ="exist13" visible="false" label="Vessel Owner's Email Address">
+							<f:fields>
+				<Input id ="ex13" placeholder="Enter" editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+								<f:FormElement id="exist24" visible="false" label="Captain Name">
+							<f:fields>
+				<Input id ="ex24" placeholder="Enter" editable="false"/>
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement id="exist14" visible="false" label="Vessel Charterer's Name">
+							<f:fields>
+				<Input id ="ex14" placeholder="Enter" editable="false"/>
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement id="exist15" visible="false" label="Vessel Charterer's Email address">
+							<f:fields>
+				<Input id ="ex15" placeholder="Enter" editable="false" />
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement id="exist25" visible="false" label="Others">
+							<f:fields>
+				<Input id ="ex25" placeholder="Enter" editable="false"/>
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement id="exist26" visible="false" label="Remarks">
+							<f:fields>
+				<Input id ="ex26" placeholder="Enter" editable="false" />
+							</f:fields>
+						</f:FormElement>
+				
+					
+					
+						
+					
+						
+					
+					
+						
+					<!--	<f:FormElement id="new23" label="Port of Call Name in Qatar">
+							<f:fields>
+				<Input id ="op17" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>-->
+						
+					
+						
+					
+						
+					
+							
+						
+						
+						
+					
+					
+						
+					<!--	<f:FormElement id="exist23" visible="false" label="Port of Call Name in Qatar">
+							<f:fields>
+				<Input id ="ex23" placeholder="Enter" editable="false"/>
+							</f:fields>
+						</f:FormElement>-->
+						
+				
+					</f:formElements>		
+					
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+			 	
+			 	</content>
+			 	</Panel>
+			 	
+			 	
+		<Panel id="pendingpanel" visible="false">
+			<Breadcrumbs >
+				    <Link press="Backtolist" id="Backtolist" text="Back To List" />
+				 
+		    	</Breadcrumbs>	 			
+			 	<content>
+			 		 <f:Form id="pendingform"
+    	editable="true" >
+    
+			<f:layout>
+				<f:ResponsiveGridLayout
+				 
+					class="sapUiSizeCompact"
+					labelSpanXL="4"
+					labelSpanL="4"
+					labelSpanM="12"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="0"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="2"
+					columnsM="2"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+
+							<f:FormElement label="IMO Number" >
+							<f:fields>
+				   <Input id ="pen1" placeholder="Enter" required="true" value="{json>name}" />
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement  label="Ship/Vessel Name" >
+							<f:fields>
+				   <Input id ="pen2" placeholder="Enter"  value="{json>name}" />
+							</f:fields>
+						</f:FormElement>
+						<!--<f:FormElement  label="Disbursement Account Number" visible='false' >
+							<f:fields>
+				<Input id ="pen3" placeholder="Enter" />
+			
+							</f:fields>
+						</f:FormElement>-->
+					<!--	<f:FormElement  label="Port Name">
+							<f:fields>
+				<Input id ="pen4"  placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>-->
+					<!--	<f:FormElement  label="Estimate Time Arrival">
+							<f:fields>
+				<Input id ="pen5" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>-->
+						
+						<f:FormElement label="Maritime Mobile Service Identity" visible="false">
+							<f:fields>
+				<DatePicker id ="pen6" value="{/ETA}" placeholder="Select Date/Time"   />
+							</f:fields>
+						</f:FormElement>
+						
+								<f:FormElement  label="Flag">
+							<f:fields>
+				<Input id ="pen8" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement  label="Call Sign">
+							<f:fields>
+				<Input id ="pen7" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement  label="Vessel Type">
+							<f:fields>
+				<Input id ="pen9" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement  label="Net Registered Tonnage" >
+							<f:fields>
+				<Input id ="pen17" placeholder="Enter" required = "true" />
+			
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement   label="Gross Registered Tonnage" >
+							<f:fields>
+				<Input id ="pen18" placeholder="Enter" required = "true"  />
+							</f:fields>
+						</f:FormElement>	
+						<f:FormElement  label="Summer’s Deadweight Tonnage" >
+							<f:fields>
+				   <Input id ="pen16" placeholder="Enter" required = "true"   />
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement  label="Length Overall" >
+							<f:fields>
+				<Input id ="pen19" placeholder="Enter"   />
+							</f:fields>
+						</f:FormElement>
+	<f:FormElement  label="Year Built">
+							<f:fields>
+				<Input id ="pen20" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement  label="Vessel Phone Number" >
+							<f:fields>
+				<Input id ="pen21" placeholder="Enter"   />
+							</f:fields>
+						</f:FormElement>
+
+					</f:formElements>
+				</f:FormContainer>
+	<f:FormContainer>
+				<f:FormElement  label="Vessel Email Address" >
+							<f:fields>
+				<Input id ="pen22" placeholder="Enter"  />
+							</f:fields>
+						</f:FormElement>
+					<f:formElements>
+					
+						<f:FormElement  label="Classification">
+							<f:fields>
+				<Input id ="pen10" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement  label="P &amp; I Club">
+							<f:fields>
+				<Input id ="pen11" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement  label="Vessel Owner's Name">
+							<f:fields>
+				<Input id ="pen12" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement  label="Vessel Owner's Email Address">
+							<f:fields>
+				<Input id ="pen13" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement  label="Captain Name">
+							<f:fields>
+				<Input id ="pen24" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+								<f:FormElement  label="Vessel Charterer's Name">
+							<f:fields>
+				<Input id ="pen14" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>		
+					
+					
+					
+							<f:FormElement  label="Vessel Charterer's Email address">
+							<f:fields>
+				<Input id ="pen15" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+					
+					
+						
+					
+						
+					<!--	<f:FormElement  label="Port of Call Name in Qatar">
+							<f:fields>
+				<Input id ="pen23" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>-->
+						
+					
+						
+						<f:FormElement  label="Type Cargo to load/discharge">
+							<f:fields>
+				<Input id ="pen25" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement  label="Remarks">
+							<f:fields>
+				<Input id ="pen26" placeholder="Enter" />
+							</f:fields>
+						</f:FormElement>
+						
+					
+							
+							
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+			 	
+			 	</content>
+			 	</Panel>	
+			 	
+	<Panel id="approvedpanel" visible="false" >
+			 			
+			 	<content>
+			 		 <f:Form id="approvedform"
+    	editable="true" >
+    
+			<f:layout>
+				<f:ResponsiveGridLayout
+				
+				class="sapUiSizeCompact"
+					labelSpanXL="4"
+					labelSpanL="4"
+					labelSpanM="12"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="0"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="2"
+					columnsM="2"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						
+						
+					
+					
+					
+							<f:FormElement label="IMO Number" >
+							<f:fields>
+				   <Input id ="app1" placeholder="Enter" required="true" value="{json>name}" editable="false" />
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement  label="Ship/Vessel Name" >
+							<f:fields>
+				   <Input id ="app2" placeholder="Enter"  value="{json>name}"  editable="false" />
+							</f:fields>
+						</f:FormElement>
+					<!--	<f:FormElement  label="Disbursement Account Number"  editable="false" visible='false'>
+							<f:fields>
+				<Input id ="app3" placeholder="Enter"  editable="false" />
+			
+							</f:fields>
+						</f:FormElement>-->
+					<!--	<f:FormElement  label="Port Name">
+							<f:fields>
+				<Input id ="app4"  placeholder="Enter"   editable="false" />
+							</f:fields>
+						</f:FormElement>-->
+					<!--	<f:FormElement  label="Estimate Time Arrival">
+							<f:fields>
+				<Input id ="app5" placeholder="Enter"  editable="false" />
+							</f:fields>
+						</f:FormElement>-->
+						
+						<f:FormElement label="Maritime Mobile Service Identity">
+							<f:fields>
+				<DatePicker id ="app6" value="{/ETA}" placeholder="Select Date/Time"  editable="false"   />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement  label="Call Sign">
+							<f:fields>
+				<Input id ="app7" placeholder="Enter"  editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement  label="Flag">
+							<f:fields>
+				<Input id ="app8" placeholder="Enter"  editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement  label="Vessel Type">
+							<f:fields>
+				<Input id ="app9" placeholder="Enter"  editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement  label="Classification">
+							<f:fields>
+				<Input id ="app10" placeholder="Enter"  editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement  label="P &amp; I Club">
+							<f:fields>
+				<Input id ="app11" placeholder="Enter"  editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement  label="Vessel Owner's Name">
+							<f:fields>
+				<Input id ="app12" placeholder="Enter"  editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement  label="Vessel Owner's Email Address">
+							<f:fields>
+				<Input id ="app13" placeholder="Enter"  editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement  label="Vessel Charterer's Name">
+							<f:fields>
+				<Input id ="app14" placeholder="Enter"  editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+		
+						
+					</f:formElements>
+				</f:FormContainer>
+	<f:FormContainer>
+					<f:formElements>
+					
+							
+					
+					
+						
+							<f:FormElement  label="Vessel Charterer's Email address">
+							<f:fields>
+				<Input id ="app15" placeholder="Enter"  editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement  label="Summer’s Deadweight Tonnage" >
+							<f:fields>
+				   <Input id ="app16" placeholder="Enter"   editable="false"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement   label="Net Registered Tonnage" >
+							<f:fields>
+				<Input id ="app17" placeholder="Enter"    editable="false"/>
+			
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement   label="Gross Registered Tonnage" >
+							<f:fields>
+				<Input id ="app18" placeholder="Enter"   editable="false" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement  label="Length Overall" >
+							<f:fields>
+				<Input id ="app19" placeholder="Enter"   editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement  label="Year Built">
+							<f:fields>
+				<Input id ="app20" placeholder="Enter"  editable="false"/>
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement  label="Vessel Phone Number" >
+							<f:fields>
+				<Input id ="app21" placeholder="Enter"  editable="false" />
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement  label="Vessel Email Address" >
+							<f:fields>
+				<Input id ="app22" placeholder="Enter"  editable="false"/>
+							</f:fields>
+						</f:FormElement>
+						
+					<!--	<f:FormElement  label="Port of Call Name in Qatar">
+							<f:fields>
+				<Input id ="app23" placeholder="Enter"  editable="false"/>
+							</f:fields>
+						</f:FormElement>-->
+						
+						<f:FormElement  label="Captain Name">
+							<f:fields>
+				<Input id ="app24" placeholder="Enter"  editable="false"/>
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement  label="Others">
+							<f:fields>
+				<Input id ="app25" placeholder="Enter"  editable="false"/>
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement  label="Remarks">
+							<f:fields>
+				<Input id ="app26" placeholder="Enter"  editable="false"/>
+							</f:fields>
+						</f:FormElement>
+						
+					
+							
+							
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+			 	
+			 	</content>
+			 	</Panel>
+			 	
+		 
+			</IconTabFilter>
+			
+			 <IconTabFilter
+			  id="itb2"
+				text="Vessel History"
+				key="informationtab2">
+		   	 
+		 	<core:Fragment fragmentName="AgentPortal_Testing.AgentPortal_Testing.view.sof" type="XML"  > </core:Fragment>
+			</IconTabFilter>
+			
+			 <IconTabFilter
+			
+				text="Vessel Expenses"
+				key="informationtab3">
+		   	 
+		   	 <core:Fragment fragmentName="AgentPortal_Testing.AgentPortal_Testing.view.vesselexpense" type="XML"  > </core:Fragment>
+		 
+			</IconTabFilter>
+		    </items>
+			</IconTabBar> 
+			 
+
+		
+	
+		</IconTabFilter>
+				
+			 <IconTabFilter   text="Customer Inquiries" key="CustomerInquiry">
+		  
+	 <core:Fragment fragmentName="AgentPortal_Testing.AgentPortal_Testing.view.CustomerInquiries" type="XML"  > </core:Fragment>
+	
+		</IconTabFilter>
+			
+			 <IconTabFilter   text="Customer Orders" key="customerorder">
+		   	  <core:Fragment fragmentName="AgentPortal_Testing.AgentPortal_Testing.view.CustomerOrder" type="XML"  > </core:Fragment>
+			 </IconTabFilter>
+		     </items>
+			 </IconTabBar> 	
+		</semantic:headerContent>
+	<html:style>
+			.clrnumb{
+	color: #3960bb!important
+}
+		.sapMITBFilter .sapMITBText{
+		    width: 6.3rem!important;
+		}
+		.bol{
+		font-weight: bold !important;
+		}
+		.sapFDynamicPage-Std-Tablet .sapFDynamicPageContentFitContainer {
+    padding: 0rem 0rem 0 0rem !important;
+}
+div#application-MyFleet-Display-component---Vessel--page-page-content {
+    padding: 1px !important;
+}
+	#application-MyFleet-display-component---Vessel--page-pageHeader
+		{
+			box-shadow : none !important;
+			}
+			.sapFDynamicPageHeader.sapFDynamicPageHeaderWithContent {
+   	box-shadow : none !important;
+}
+header#application-MyFleet-Display-component---Vessel--page-pageHeader {
+    box-shadow: none !important;
+}
+	</html:style>
+
+
+	    <semantic:footerCustomActions>
+	     	
+										  <!--	Customers Buttons-->
+                    						     	
+	<Button  id="abtn" text="Add Vessel" press="addvessel"/>
+
+    <Button id="sbtn" text = "Save Vessel Details" press = "savevessel" type = "Accept" visible="false" />
+      <Button id="EditVessel" text = "Edit" press = "EditVessel" type = "Reject" visible="false" />
+    <Button id="SaveEditVessel" text = "Save" press = "SaveEditVessel" type = "Reject" visible="false" />
+     <Button id="SavePendingEditVessel" text = "" press = "SavePendingEditVessel" type = "Reject" visible="false"/>
+    	<Button id="cbtn" text = "Cancel" press = "addcancelDialog" type = "Reject" visible="false" />
+ <!-- <Button id="advsbtn" text = "Add Vessel Call" press = "addveselDialog" type = "Reject" visible="false" />-->
+   
+    
+    <Button id="cancelcargo" text = "Cancel" press = "cancelvesselhistory" type = "Reject" visible="false" />
+    <Button id="savecargo" text = "Save Cargo Details" press = "savecargo" type = "Accept" visible="false" />
+    <Button id="cancelinvoice" text = "Cancel" press = "cancelinvoice" type = "Reject" visible="false"/>
+    <Button id="approveinvoice" text = "Save" press = "approveinvoice" type = "Accept" visible="false"/>
+                        
+                    					<!-- Customer Inquiries-->
+                    					
+   <!-- <Button id="cancelinq" enabled="true"  text = "Cancel" press = "cancelinq" type = "Accept" visible="false"/>-->
+    <!--<Button id="cancelinq12" enabled="true"  text = "Reset" press = "cancelinq1" type = "Accept" visible="false"/>
+    <Button id="confirminq12" enabled="true"  text = "Confirm All" press = "confirminq" type = "Accept" visible="false"/>
+    <Button id="confirmselectedinq12" enabled="true"  text = "Confirm Selected" press = "confirmselectedinq" type = "Accept" visible="false"/>
+			<Button text="Reset" enabled="true" press="reset2" id="pto"  visible="false" type = "Accept"/>
+	<Button text="Send Quotation" enabled="true" press="reset" id="reset1" visible="false" type = "Accept" />-->
+	
+			<!--- CI new btn code-->
+				<Button id="assignto"	text = "Assign to"  visible="false" press='assigninq'/>   
+			<Button  id="cancelinq12"  text="Reset" press="CI_reset1" visible="false" type = "Reject"/>
+			<Button  id="confirminq12"  text="Confirm" press="CI_Acceptall"  visible="false" type ="Accept"/>
+			<Button id="confirmselectedinq12" text="Confirm Selected" press="CI_confirmsel" visible="false" type ="Accept"/>
+			<!--<Button id="pto" text="Reset" press="CI_reset2" visible="false" type ="Reject"/> wbsinq saleset-->
+			<!--<Button  id="reset1" text="Approve Quotation" press="validations" visible="false" type ="Accept"/> -->
+			<Button  id="reset1" text="Approve Quotation" press="validations" visible="false" type ="Accept"/>
+			<Button id="viewdet" text="View Seaman Details" press="seamanview" visible="false" />
+			<!--end-->
+
+                        				<!--Customer Order-->
+                        				
+    <Button id="cancelorder" 	text = "Cancel" press = "cancelorder" type = "Accept" visible="false"/>
+    <Button id="approvere"  	text = "Confirm Selected" press = "ConfirmSelected" type = "Accept" visible="false"/>
+	<Button id="approveselectre"	text = "Confirm" press = "approveselectre"	type = "Reject" visible="false" />
+    <Button id="cancelapprove" 	text = "Cancel" press = "cancelapprove" type = "Accept" visible="false"/>
+    <Button id="confirmorder" text = "Approve Order" press = "confirmorder" type = "Reject" visible="false"/>  <!-- Dynamic button {otype}-->
+    <Button id="approvechange"  	text = "Approve Change-Order" press = "approvechange" type = "Accept" visible="false"/>
+	<Button id="approveselect"	text = "Approve Selected Change-Order" press = "approveselect" type = "Reject" visible="false" />
+	<Button id="viewseamanorder" text="View Seaman Details" press="seamanvieworder" visible="false" />
+    
+	
+		
+		</semantic:footerCustomActions>
+
+	</semantic:SemanticPage>
+
+</mvc:View>

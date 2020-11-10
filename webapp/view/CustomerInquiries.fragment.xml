@@ -1,0 +1,1344 @@
+<core:FragmentDefinition 	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 
+	xmlns:semantic="sap.f.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:ui="sap.ui.table"
+xmlns:core="sap.ui.core"
+xmlns:form="sap.ui.layout.form" 
+xmlns:fb="sap.ui.comp.filterbar"
+xmlns:l="sap.ui.layout"
+xmlns:u="sap.ui.unified"
+xmlns:uxap="sap.uxap"
+xmlns:tnt="sap.tnt"
+xmlns:viz="sap.viz.ui5.controls"
+xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+xmlns:viz.data="sap.viz.ui5.data"
+xmlns:ch="sap.suite.ui.microchart"
+xmlns:rules="sap.rules.ui"
+xmlns:f="sap.ui.layout.form" xmlns:vm="sap.ui.comp.variants"
+xmlns:m="sap.m" >
+<BusyDialog id="BusyDialog" />
+	<VBox class="sapUiSizeCompact" >
+	    <form:SimpleForm id="SSform2"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title=""
+			labelSpanXL="4"
+			labelSpanL="4"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="0"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="4"
+			columnsL="4"
+			columnsM="4"
+			singleContainerFullSize="false"
+			class="sapUiSizeCompact">
+			<form:content>
+        
+        <core:Title text="" class="coretitle"/>
+	    <!--<l:FixFlex  vertical="false">
+		<l:fixContent> 
+			
+				<ObjectAttribute  id="id_ltchngd" title="Last Changed" text="Jun 30, 2018" class="sapUiSmallMargin" active="true" />
+			<ObjectAttribute id="ocompname"   title="Last Changed By" text="NAC Agent" class="sapUiSmallMargin" active="true" />
+			
+		</l:fixContent> 
+	    </l:FixFlex> 
+	            
+        <core:Title text="" class="coretitle"/>
+        <l:FixFlex   vertical="false" class="sapUiSmallMargin">
+		<l:fixContent>
+			
+		 	<ObjectAttribute  id="id_actual_value" title="Total Inquiries" text="100" class="sapUiSmallMargin" active="true" />
+		 	</l:fixContent> 
+		 </l:FixFlex>  
+		 <core:Title text="" class="coretitle"/>
+		 	 <l:FixFlex   vertical="false" class="sapUiSmallMargin">
+		<l:fixContent>
+			
+			<Label text="Select by Service" />
+			<ComboBox id="id_servcombo"
+			placeholder = "Select"  selectionChange="Combosortbyserv"  width="75%">
+				<core:Item key="Port Charges" text="Port Charges" />
+				<core:Item key="Hub Agency Services" text="Hub Agency Services" />
+				<core:Item key="Husbandry/Vessel support services" text="Husbandry/Vessel support services" />
+				<core:Item key="Other Inquiry" text="Other Inquiry" />
+			</ComboBox>
+		</l:fixContent> 
+		 </l:FixFlex>   
+		 <core:Title text="" class="coretitle"/>
+		 <l:FixFlex   vertical="false" class="sapUiSmallMargin">
+		<l:fixContent>
+			
+			<Label text="Search by Status" />
+			<ComboBox placeholder="Select" id="id_serbysts" selectionChange="Combosortbysts" width="80%">
+				<core:Item key="InProcess" text="InProcess" />
+				<core:Item key="New" text="New" />
+				<core:Item key="Approved" text="Approved" />
+				<core:Item key="Rejected" text="Rejected" />
+			</ComboBox>
+	   	</l:fixContent> 
+		 </l:FixFlex>-->
+		   </form:content>
+		</form:SimpleForm>
+		</VBox >
+			<!--	Second Header Content below charts-->
+		
+	<Panel id="CustomerInquiriesPanel"  width="auto" class="sapUiSizeCompact" accessibleRole="Region">
+			<headerToolbar>
+			<Toolbar height="2rem" class="sapUiSizeCompact" >
+				<Title id="id_inq" text="Item List"/>
+					<SearchField width="10rem" liveChange="CI_onSearch1" id="Search_id"/>
+ 				<ToolbarSpacer />
+ 				
+ 			
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 			
+				  <!--  <Link press="link1" id="linkid1" text="Inquiry History" visible="false"/>
+				    <Text id="linkid2" text=" / Inquiry Details"/>-->
+		    
+		    	
+		    		<Button icon="sap-icon://refresh" tooltip="Refresh" press="CI_refresh"/>
+ 			    <Button icon="sap-icon://filter" tooltip="Filter" press="CI_filterCategories"/>
+				<Button icon="sap-icon://sort" tooltip="Sort Categories" press="CI_sortCategories"/>
+ 			</Toolbar>
+		
+		</headerToolbar>
+			<content>
+			<!--	2nd ResponsiveSplitter-->
+		<l:ResponsiveSplitter id="Rsplitter12"  >
+		<l:PaneContainer>
+			
+			<l:SplitPane   requiredParentWidth="169"> 
+			<Panel   height="100%">
+			<Table class="sapUiSizeCompact sapUiSmallMarginEnd" id="idTableMyOrderss" inset="false" > 
+	         	<columns>
+				<Column>
+					<Label text="Inquiry Number" design="Bold" textAlign="Center"/>
+				</Column>
+				</columns> 
+				<items>   
+				<ColumnListItem id="idCLMyOrders" vAlign="Middle" type="Navigation" press="LinkPress">
+				 <Text text="" class="bold" id="sp_inq"/> 
+				</ColumnListItem>
+				</items>
+				<layoutData>
+				<l:SplitterLayoutData size="200px" /></layoutData>
+			</Table>
+			</Panel>
+	
+	</l:SplitPane>
+	<l:PaneContainer>
+	<l:SplitPane requiredParentWidth="200"  id="default11131">
+		<Panel>
+		
+	
+			  <Table class="sapUiSizeCompact" id="idSelectedServ"  > 
+	         	<columns>
+				<Column >
+					<Label text="Sub-Service Details" design="Bold" textAlign="Center"/>
+				</Column>
+				</columns> 
+			 	<layoutData>
+				<l:SplitterLayoutData size="200px" /></layoutData>
+			</Table> 
+		
+	 			</Panel>
+	 			</l:SplitPane>
+	 			
+				<l:PaneContainer >
+		<l:SplitPane requiredParentWidth="600">
+				
+		<Panel id="panel">
+		<content>
+				<HBox class="sapUiSizeCompact bg" >
+		  <f:SimpleForm id="SSform18"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title=""
+			labelSpanXL="2"
+			labelSpanL="2"
+			labelSpanM="2"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="0"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false"
+			class="sapUiSizeCompact">
+		  	
+			<f:content>
+				<HBox>
+	 	<FlexBox
+					
+					alignItems="Start"
+					justifyContent="Start"
+					>
+	 			<items>
+	 					<VBox class="sapUiSmallMarginEnd">
+	 			 		<!--<Label text="Royal Dutch Shell" class="datebold sapUiSmallMarginBottom" />-->
+	 	 	<ObjectAttribute title="Customer ID"  text="AS34556" class="datebold sapUiTinyMarginBottom"  active="true" id="id_cid1" visible='false'/>
+	 		<ObjectAttribute title="Customer Name"  text="" class="datebold sapUiTinyMarginBottom"  active="true" id="id_cname1" visible='false'/>
+			<ObjectAttribute title="Inquiry Number"  text="636898542" class="datebold sapUiTinyMarginBottom"  active="true" />
+		 	<ObjectAttribute   title="Port Name" text="Ras Laffan" class="sapUiTinyMarginBottom"  active="true" />
+		   <ObjectAttribute   title="IMO Number" text="IMO287631" class="sapUiTinyMarginBottom"  active="true" id="id_imonum"/>
+			</VBox>
+		</items>
+				</FlexBox>
+					<FlexBox
+					
+					alignItems="Start"
+					justifyContent="Start"
+					>
+	 			<items>
+	 					<VBox class="sapUiSmallMarginBegin sapUiMediumMarginEnd">
+	 	<ObjectAttribute   title="Vessel Name" text="V29292875" class="sapUiTinyMarginBottom" active="true" />
+			<ObjectAttribute   title="ETA" text="12.00 pm Jul 02, 2018" class="sapUiTinyMarginBottom" active="true" />
+			<ObjectAttribute   title="ETD" text="12.00 pm Jul 02, 2018" class="sapUiTinyMarginBottom" active="true" />
+	 	 		<ObjectAttribute id="total_amt"  title="Actual Pr" text="8496.00 USD" class="sapUiTinyMarginBottom" active="true" />
+			</VBox>
+		</items>
+				</FlexBox>
+	   
+    
+      	<FlexBox
+					class="sapUiSmallMarginBegin"
+					alignItems="Start"
+					justifyContent="Start">
+      			<items>
+      				<VBox class="sapUiSmallMarginBegin">
+      			
+			
+				
+		</VBox>
+		
+		</items>
+		</FlexBox>
+	
+	    </HBox>
+	    	</f:content> 
+	    	 </f:SimpleForm>
+	    	 </HBox> 
+		<!--<ObjectHeader
+		id="oh1"
+		responsive="true"
+		fullScreenOptimized="true"
+		intro=""
+		title=""
+		backgroundDesign="Translucent">
+	
+		<headerContainer>-->
+			<IconTabBar
+				id="itb23"
+				selectedKey="key3"
+				
+				class="sapUiResponsiveContentPadding">
+				<items>
+				<IconTabFilter
+					id="seamandetails"
+					text="Seaman Form"
+					key="key1"
+					>
+					<content>
+			<ui:Table id="idsup_protab" 
+								rows="{/seamandata}"  
+				   				class="sapUiContentPadding sapUiSizeCompact" 
+				   				selectionMode="None">
+				
+					<ui:toolbar>
+					<Toolbar>
+						<content>
+							<ToolbarSpacer/>
+							 
+							<Button
+								icon="sap-icon://add"
+								tooltip="add one more item"
+								press="seaman_add"/>
+								</content>
+						</Toolbar>
+					</ui:toolbar>
+			 
+
+				<ui:columns>
+				<ui:Column  hAlign="Center">
+					
+						<Label text="SNo" wrapping="true"/>
+						<ui:template>
+							<Text text="{ID}" wrapping="true"/>
+						</ui:template>
+					</ui:Column>
+					
+					<ui:Column width="10rem" hAlign="Center"> 
+						<Label text="Service Type" wrapping="true"/>
+						<ui:template>
+							 <ComboBox id="tab_combo" width="100%" selectionChange="onSelectionChange"></ComboBox>
+			 
+						</ui:template>
+					</ui:Column>
+					
+					<ui:Column width="10rem" hAlign="Center"> 
+						<Label text="Name" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty1}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					
+						<ui:Column width="10rem" hAlign="Center">
+					
+						<Label text="Passport No" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty2}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					
+					<ui:Column width="10rem" hAlign="Center">
+					
+						<Label text="Nationality" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty3}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					
+						<ui:Column width="10rem" hAlign="Center"> 
+						<Label text="Date and Place of Issue" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty4}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					
+					<ui:Column width="10rem" hAlign="Center"> 
+						<Label text="Passport Expiry Date" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty5}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					
+					<ui:Column width="10rem" hAlign="Center"> 
+						<Label text="Seaman Book No" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty6}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					
+					<ui:Column width="10rem" hAlign="Center"> 
+						<Label text="Gender" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty7}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					
+					<ui:Column width="10rem" hAlign="Center"> 
+						<Label text="Hotel Required" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty8}" placeholder="Enter "/>
+						</ui:template>
+					</ui:Column>
+					
+					<ui:Column width="10rem" hAlign="Center"> 
+						<Label text="Joiner/Offsighner/Attendee" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty9}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column> 
+					<ui:Column width="10rem" hAlign="Center"> 
+						<Label text="Attachment" wrapping="true"/>
+						<ui:template>
+							<u:FileUploader 
+			name="myFileUpload"
+			uploadUrl="upload/"
+			uploadComplete="handleUploadComplete"/>
+						</ui:template>
+					</ui:Column>
+					<ui:Column width="10rem" hAlign="Center"> 
+						<Label text="Comments" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty11}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+			</ui:columns>	
+			</ui:Table>
+		 
+			 <FlexBox visible='false'
+					height="50px"
+					alignItems="End"
+					justifyContent="End">
+					<items> 
+				<Button  text="Accept Selected Details" type="Accept" class="sapUiSmallMarginEnd" press="nextscreen" /> 
+				<Button  text="Reject All" type="Reject" /> 
+		</items>
+		</FlexBox>
+						
+					</content>
+				</IconTabFilter>
+				
+				<IconTabFilter
+					id="servicedetails"
+					
+					text="Service Form"
+					key="key2">
+					<content>
+					
+						
+		<Panel id='divingrqst' visible='false' expandable="true" expanded="true" width="auto">
+		<headerToolbar>
+			<Toolbar height="3rem">
+				<Title text="Diving Request" />
+				<ToolbarSpacer />
+				<Button
+								icon="sap-icon://add"
+								tooltip="add one more item"
+								press="Diving_add"/>
+				
+			</Toolbar>
+		</headerToolbar>
+		<content>
+				 <ui:Table  mode="MultiSelect"	class="sapUiSizeCompact" id="divingreq" rows="{/divingrequest}"   > 
+	        		<ui:columns>
+
+			 	<ui:Column  hAlign="Center">
+						<Label text="Date/Time of Service Request" wrapping="true"/>
+						<ui:template>
+						<DateTimePicker
+		                	id="DTP1"
+			                change="handleChange"/>
+						</ui:template>
+					</ui:Column>
+						<ui:Column hAlign="Center">
+						<Label text="Types of Services" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty2}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+						<ui:Column  hAlign="Center">
+						<Label text="Comments/Remarks if any" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty3}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					
+						</ui:columns>
+			
+					
+					</ui:Table>
+				 
+			
+		</content>
+	</Panel>
+		<Panel id='sscecp' visible='false' expandable="true" expanded="true" width="auto">
+		<headerToolbar>
+			<Toolbar height="3rem">
+				<Title text="SSCEC Certification" />
+				<ToolbarSpacer />
+				<Button
+								icon="sap-icon://add"
+								tooltip="add one more item"
+								press="sscec_add"/>
+				
+			</Toolbar>
+		</headerToolbar>
+		<content>
+			<ui:Table  mode="MultiSelect"	class="sapUiSizeCompact" id="sscec"  	rows="{/sscecrequest}" > 
+	        		<ui:columns>
+
+			 	<ui:Column  hAlign="Center">
+						<Label text="Date/Time of Service Request" wrapping="true"/>
+						<ui:template>
+						<DateTimePicker
+			id="DTP2"
+			change="handleChange"/>
+						</ui:template>
+					</ui:Column>
+						<ui:Column hAlign="Center">
+						<Label text="Next port of call" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty2}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+						<ui:Column  hAlign="Center">
+						<Label text="Comments/Remarks if any" wrapping="true"/>
+						<ui:template>
+						<Input value="{Empty3}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					
+						</ui:columns> 
+						</ui:Table>
+			
+		</content>
+	</Panel>
+	
+	<Panel id='serviceboat' visible='false' expandable="true" expanded="true" width="auto">
+		<headerToolbar>
+			<Toolbar height="3rem">
+				<Title text="Service Boat" />
+				<ToolbarSpacer />
+			<Button
+								icon="sap-icon://add"
+								tooltip="add one more item"
+								press="sb_add"/>
+				
+			</Toolbar>
+		</headerToolbar>
+		<content>
+			<ui:Table  mode="MultiSelect"	class="sapUiSizeCompact" id="sb" rows="{/sbrequest}" > 
+	        		<ui:columns>
+
+			 	<ui:Column  hAlign="Center">
+						<Label text="Date/Time of Service Request" wrapping="true"/>
+						<ui:template>
+						<DateTimePicker
+			id="DTP3"
+			change="handleChange"/>
+						</ui:template>
+					</ui:Column>
+						<ui:Column hAlign="Center">
+						<Label text="Job/Activity" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty2}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+						<ui:Column  hAlign="Center">
+						<Label text="Comments/Remarks if any" wrapping="true"/>
+						<ui:template>
+								<Input value="{Empty3}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					
+						</ui:columns>
+					</ui:Table>
+			
+		</content>
+	</Panel>
+	
+	<Panel id='freshwater' visible='false' expandable="true" expanded="true" width="auto">
+		<headerToolbar>
+			<Toolbar height="3rem">
+				<Title text="Supply Fresh Water/Fuel" />
+				<ToolbarSpacer />
+				<Button
+								icon="sap-icon://add"
+								tooltip="add one more item"
+								press="wf_add"/>
+			</Toolbar>
+		</headerToolbar>
+		<content>
+			<ui:Table  mode="MultiSelect"	class="sapUiSizeCompact" id="wf" rows="{/wfrequest}" > 
+	        		<ui:columns>
+
+			 	<ui:Column  hAlign="Center">
+						<Label text="Date/Time of Service Request" wrapping="true"/>
+						<ui:template>
+						<DateTimePicker
+			id="DTP4"
+			change="handleChange"/>
+						</ui:template>
+					</ui:Column>
+						<ui:Column hAlign="Center">
+						<Label text="Fresh Water (MT)" wrapping="true"/>
+						<ui:template>
+						<Input value="{Empty2}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					<ui:Column hAlign="Center">
+						<Label text="Diesel (LGO)" wrapping="true"/>
+						<ui:template>
+						<Input value="{Empty3}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					<ui:Column hAlign="Center">
+						<Label text="HFO (MT)" wrapping="true"/>
+						<ui:template>
+						<Input value="{Empty4}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+						<ui:Column  hAlign="Center">
+						<Label text="Comments/Remarks if any" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty5}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+						</ui:columns> 
+					</ui:Table>
+			
+		</content>
+	</Panel>
+	
+	<Panel id='ctm' visible='false' expandable="true" expanded="true" width="auto">
+		<headerToolbar>
+			<Toolbar height="3rem">
+				<Title text="Cash to Master" />
+				<ToolbarSpacer />
+			<Button
+								icon="sap-icon://add"
+								tooltip="add one more item"
+								press="ctom_add"/>
+				
+			</Toolbar>
+		</headerToolbar>
+		<content>
+			<ui:Table  mode="MultiSelect"	class="sapUiSizeCompact" id="ctom" rows="{/ctomrequest}" > 
+	        		<ui:columns>
+
+			 	<ui:Column  hAlign="Center">
+						<Label text="CTM Amount" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty1}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+						<ui:Column hAlign="Center">
+						<Label text="Denomination Request" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty2}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					<ui:Column hAlign="Center">
+						<Label text="Currency" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty3}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					
+						<ui:Column  hAlign="Center">
+						<Label text="Comments/Remarks if any" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty4}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+						</ui:columns>
+					</ui:Table>
+			
+		</content>
+	</Panel>
+	
+	<Panel id='exitpassp' visible='false' expandable="true" expanded="true" width="auto">
+		<headerToolbar>
+			<Toolbar height="3rem">
+				<Title text="Material Exit Pass" />
+				<ToolbarSpacer />
+				<Button
+								icon="sap-icon://add"
+								tooltip="add one more item"
+								press="exitpass_add"/>
+				
+				
+			</Toolbar>
+		</headerToolbar>
+		<content>
+			<ui:Table  mode="MultiSelect"	class="sapUiSizeCompact" id="exitpass" rows="{/exitpassrequest}"  > 
+	        		<ui:columns>
+
+			 	<ui:Column  hAlign="Center">
+						<Label text="Date/Time of Service Request" wrapping="true"/>
+						<ui:template>
+					<DateTimePicker
+			id="DTP5"
+			change="handleChange"/>
+						</ui:template>
+					</ui:Column>
+						<ui:Column hAlign="Center">
+						<Label text="Quantity" wrapping="true"/>
+						<ui:template>
+								<Input value="{Empty2}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					<ui:Column hAlign="Center">
+						<Label text="Collecting Point From" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty3}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					
+						<ui:Column  hAlign="Center">
+						<Label text="Collecting Point To" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty4}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+						<ui:Column  hAlign="Center">
+						<Label text="Material Description" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty5}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					
+						</ui:columns>
+					</ui:Table>
+			
+		</content>
+	</Panel>
+		<Panel id='sludgeremoval' visible='false' expandable="true" expanded="true" width="auto">
+		<headerToolbar>
+			<Toolbar height="3rem">
+				<Title text="Garbage/Sludge Removal Request" />
+				<ToolbarSpacer />
+				<Button
+								icon="sap-icon://add"
+								tooltip="add one more item"
+								press="garbage_add"/>
+				
+			</Toolbar>
+		</headerToolbar>
+		<content>
+			<ui:Table  mode="MultiSelect"	class="sapUiSizeCompact" id="garbage" rows="{/garbagerequest}"  > 
+	        		<ui:columns>
+
+			 	<ui:Column  hAlign="Center">
+						<Label text="Date/Time of Service Request" wrapping="true"/>
+						<ui:template>
+					<DateTimePicker
+			id="DTP6"
+			change="handleChange"/>
+						</ui:template>
+					</ui:Column>
+						<ui:Column hAlign="Center">
+						<Label text="Oily Bag Water" wrapping="true"/>
+						<ui:template>
+							<Input value="{Empty1}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					<ui:Column hAlign="Center">
+						<Label text="Oily Resudue/Sludge" wrapping="true"/>
+						<ui:template>
+						<Input value="{Empty2}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					
+						<ui:Column  hAlign="Center">
+						<Label text="Other" wrapping="true"/>
+						<ui:template>
+						<Input value="{Empty3}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+						<ui:Column  hAlign="Center">
+						<Label text="Comments/Remarks if any" wrapping="true"/>
+						<ui:template>
+						<Input value="{Empty4}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					
+						</ui:columns>
+			
+					
+					</ui:Table>
+			
+		</content>
+	</Panel>
+	<Panel id="shipspares" visible="false" expandable="true" expanded="true" width="auto" >
+		<headerToolbar>
+			<Toolbar height="3rem">
+				<Title text="Ship Spares and Provision" />
+				<ToolbarSpacer />
+			<Button
+								icon="sap-icon://add"
+								tooltip="add one more item"
+								press="shipspare_add"/>
+				
+			</Toolbar>
+		</headerToolbar>
+		<content>
+			<ui:Table  mode="MultiSelect"	class="sapUiSizeCompact" id="shipspare"  rows="{/shipsparerequest}" > 
+	        		<ui:columns>
+
+			 	<ui:Column  hAlign="Center">
+						<Label text="Item Description" wrapping="true"/>
+						<ui:template>
+					    	<Input value="{Empty1}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+						<ui:Column hAlign="Center">
+						<Label text="Quantity" wrapping="true"/>
+						<ui:template>
+						  <Input value="{Empty2}" placeholder="Enter"/>
+						</ui:template>
+					</ui:Column>
+					<ui:Column hAlign="Center">
+						<Label text="Attachments" wrapping="true"/>
+						<ui:template>
+							<u:FileUploader
+			id="fileUploaders"
+			name="myFileUpload"
+			uploadUrl="upload/"
+			uploadComplete="handleUploadComplete"/>
+						</ui:template>
+					</ui:Column>
+					
+				</ui:columns>
+			
+					
+					</ui:Table>
+			
+		</content>
+	</Panel>
+						
+					</content>
+				</IconTabFilter>
+				
+					<IconTabFilter
+					id="Inquirystatus"
+					text="Inquiry Status"
+					key="semanselect3">
+					<content>
+							
+				<HBox>
+					<Text text = "Status :" />
+									<RadioButton groupName="GroupB" text="Approved" />
+			<RadioButton groupName="GroupB" text="Rejected" />
+				<RadioButton groupName="GroupB" text="InProcess" />
+				</HBox>
+			<!--	</f:content>
+			</f:SimpleForm>-->
+						</content>
+							</IconTabFilter>
+				
+				</items>
+			</IconTabBar>
+	<!--	</headerContainer>
+	</ObjectHeader>-->
+	
+	</content>
+	</Panel>
+	
+	</l:SplitPane>
+	</l:PaneContainer>
+	</l:PaneContainer>	
+	
+	</l:PaneContainer>	
+	</l:ResponsiveSplitter>			
+	 
+
+<html:style>
+	
+.sapUiSizeCompact .sapUiFormContainerTitle>.sapUiFormTitle{
+display: none!important;
+}
+</html:style>
+
+			<!--	1st ResponsiveSplitter-->
+				
+				
+	<l:ResponsiveSplitter id="Rsplitter" >
+		<l:PaneContainer     >
+			<l:SplitPane   requiredParentWidth="400" > 
+		
+		<Panel height="600px">
+			<content>
+	
+		  <!--first screen inquiry history table-->		
+		 	<Table 	class="sapUiSizeCompact" id="RidTableMyOrders" inset="false" mode="SingleSelectMaster" growing="true" growingThreshold = "1000"
+		    selectionChange="LinkPress"   sticky="ColumnHeaders" updateFinished="ci_render" > 
+			<columns >
+						  <Column width="5rem">
+								<Label text="Inquiry Number" design="Bold" textAlign="Center" />
+							</Column>
+								<Column 
+								width="4rem"
+								hAlign="Begin"
+							    minScreenWidth="Small"
+							 	 demandPopin="true" 
+							 	>
+								<Label text="Vessel Name" design="Bold" />
+							</Column> 
+							<Column 
+								width="4rem"
+							    minScreenWidth="Small"
+							 	 demandPopin="true"
+							 	 visible="false">
+								<Label text="Service Type" design="Bold"  />
+							</Column>
+					        	<Column 
+								width="5rem"
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+								<Label text="Date Placed" design="Bold" />
+							</Column> 
+							<Column 
+								width="4rem"
+								hAlign="Center"
+							    minScreenWidth="Small"
+							 	 demandPopin="true" 
+							 	 
+							 	>
+								<Label text="Status" design="Bold" />
+							</Column> 
+						
+					    	<Column 
+								width="5rem"
+								hAlign="Center"
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+								<Label text="Total Price" design="Bold" />
+							</Column> 
+							
+							 </columns>
+			 				<items>
+			 			   
+					<!--	<ColumnListItem id="idCLMyOrders1" vAlign="Middle" type="Navigation"   > 
+				 	    	<cells> 
+							    <Text text="{INQUIRYNUMBER}"/>
+							    <Text text="{SERVICETYPE}"/>
+								<Text text="{
+            				path: 'REQUESTEDDATE',
+            				type: 'sap.ui.model.type.Date',
+            		       	formatOptions: {
+							style: 'medium',
+							source: {
+								pattern: 'MM/dd/yyy'
+		            					}
+		            				}
+		            			}"/>
+		            			 <ObjectStatus  text="{ORDERSTATUS}" state="{parts:[{path: 'ORDERSTATUS'}], formatter:'.rstatus'}"/>
+            				   <ObjectNumber number="{TOTALPRICE}" unit="{CURRENCY}"/> 
+								</cells> 
+						</ColumnListItem>-->
+					
+					</items>	
+					</Table>
+					
+			</content>
+			<layoutData><l:SplitterLayoutData size="540px" /></layoutData>
+		</Panel>
+		</l:SplitPane>
+	<l:PaneContainer >
+	<l:SplitPane requiredParentWidth="400" >
+		 <Panel >
+			<content>
+ 
+	    	<HBox class="sapUiSizeCompact bg" >
+		  <f:SimpleForm id="SSform12"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title=""
+			labelSpanXL="2"
+			labelSpanL="2"
+			labelSpanM="2"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="0"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="2"
+			columnsM="2"
+			singleContainerFullSize="false"
+			class="sapUiSizeCompact">
+		  	
+			<f:content>
+				<HBox>
+	 	<FlexBox
+					
+					alignItems="Start"
+					justifyContent="Start"
+					>
+	 			<items>
+	 					<VBox class="sapUiLargeMarginEnd">
+	 	<!--	<Label text="Royal Dutch Shell" class="datebold sapUiSmallMarginBottom" />-->
+	 		<ObjectAttribute title="Customer ID"  text="" class="datebold sapUiTinyMarginBottom"  active="true" id="id_cid" visible='false'/>
+		 	<ObjectAttribute title="Customer Name"  text="" class="datebold sapUiTinyMarginBottom"  active="true" id="id_cname" visible='false'/>
+		 	<ObjectAttribute title="Inquiry Number"  text="636898542" class="datebold sapUiTinyMarginBottom"  active="true" id="id_inq_no1"/>
+		 	<ObjectAttribute   title="IMO Number" text="IMO287631" class="sapUiTinyMarginBottom"  active="true" id="id_imo"/>
+		 	<ObjectAttribute   title="Port Name" text="Ras Laffan" class="sapUiTinyMarginBottom"  active="true"  id="id_port"/>
+		 		<ObjectAttribute id="final"  title="Final Price" text="" class="sapUiTinyMarginBottom" active="true" visible="false"/>
+			</VBox>
+		</items>
+				</FlexBox>
+					<FlexBox
+					class="sapUiMediumMarginBegin"
+					alignItems="Start"
+					justifyContent="Start"
+					>
+	 			<items>
+	 					<VBox class="sapUiSmallMarginEnd">
+	 		<ObjectAttribute  id="id_vessel_name" title="Vessel Name" text="V29292875" class="sapUiTinyMarginBottom" active="true" />
+			<ObjectAttribute   title="ETA" text="12.00 pm Jul 02, 2018" class="sapUiTinyMarginBottom" active="true" id="id_eta"/>
+			<ObjectAttribute  title="ETD" text="12.00 pm Jul 02, 2018" class="sapUiTinyMarginBottom" active="true" id="id_etd" />
+			<ObjectAttribute id="total_amt11"  title="Estimated Cost" text="8496.00 USD" class="sapUiTinyMarginBottom" active="true" />
+		
+	 		
+		 	
+			</VBox>
+		</items>
+				</FlexBox>
+	   
+    
+	    </HBox>
+	    	</f:content> 
+	    	 </f:SimpleForm>
+	    	 </HBox> 
+			<IconTabBar
+		id="RidIconTabBarFiori2" 
+		select="handlefinalprice"
+		expanded="{device>/isNoPhone}" 
+		class="bgwhite">
+		<items class="bgwhite">
+			
+			<IconTabFilter id="id_inq_items" text="Inquiry Items" key="inqitem" class="bgwhite" visible="false">
+		 	<Table  mode="MultiSelect"	class="sapUiSizeCompact" id="idTableMyOrdersLine" selectionChange="vendorSelect" visible="false" >  <!--updateFinished="CI_sorttable"-->
+	           	<columns>
+	           		<Column width='0rem' >
+						<Label text="S.NO" design="Bold" textAlign="Center" visible="false"/>
+						</Column>
+	           		
+						<Column width='7rem' >
+						<Label text="Sub Service Details" design="Bold" textAlign="Center"/>
+						</Column>
+					       
+						<Column 
+						width="3rem"
+						demandPopin="true" >
+						<Label text="Quantity" design="Bold" change="pricecalc"/>
+						</Column>
+					 
+						<Column
+						width="6rem"
+						demandPopin="true" hAlign="Center">
+						<Label text="Item Price" design="Bold" />
+						</Column>
+						
+						<Column
+						width="3rem"
+						demandPopin="true" hAlign="Center">
+						<Label text="Remark" design="Bold" />
+						</Column>
+						
+						<Column
+						width="1rem"
+						demandPopin="true" hAlign="Center">
+						<Label text="" design="Bold"  />
+						</Column>
+						
+							<Column width='0rem' >
+						<Label text="flag" design="Bold" textAlign="Center" visible="false"/>
+						</Column>
+						
+							<Column width='0rem' >
+						<Label text="filebase" design="Bold" textAlign="Center" visible="false"/>
+						</Column>
+						
+							<Column width='0rem' >
+						<Label text="filename1" design="Bold" textAlign="Center" visible="false"/>
+						</Column>
+						
+						<Column width='0rem' >
+						<Label text="cusfilebase" design="Bold" textAlign="Center" visible="false"/>
+						</Column>
+						
+							<Column width='0rem' >
+						<Label text="cusfilename1" design="Bold" textAlign="Center" visible="false"/>
+						</Column>
+							<Column width='0rem' visible="false" >
+						<Label text="Discount %" design="Bold" textAlign="Center" visible="false" />
+						</Column>
+						<Column width='0rem' >
+						<Label text="servicetype" design="Bold" textAlign="Center" visible="false" />
+						</Column>
+							<Column width='0rem' >
+						<Label text="roles" design="Bold" textAlign="Center" visible="false" />
+						</Column>
+							<Column width='0rem' >
+						<Label text="Service code" design="Bold" textAlign="Center" visible="false" />
+						</Column>
+						
+					
+				</columns>  
+		 	</Table>
+		 	<Table  mode="MultiSelect"	class="sapUiSizeCompact" id="idOtherinq" visible="false"> 
+	           	<columns>
+	           			<Column width='0rem' visible="false" >
+						<Label text="Item no" design="Bold" textAlign="Center" visible="false"/>
+						</Column>
+					<Column width='7rem' >
+						<Label text="Service Name" design="Bold" textAlign="Center"/>
+						</Column>
+						<Column 
+						width="3rem"
+						hAlign="Center"
+						demandPopin="true" >
+						<Label text="Quantity" design="Bold" change="pricecalc"/>
+						</Column>
+						
+						<Column
+						width="5rem"
+						demandPopin="true" hAlign="Center">
+						<Label text="Price" design="Bold" />
+						</Column>
+						<Column
+						width="3rem"
+						demandPopin="true" hAlign="Center">
+						<Label text="Remark" design="Bold" />
+						</Column>
+							<Column
+						minScreenWidth="Small"
+						width='0rem'
+						demandPopin="true" hAlign="Center" visible="false">
+						<Label text="Flag" design="Bold" visible="false" />
+						</Column>
+							<Column width='0rem' visible="false" >
+						<Label text="Discount %" design="Bold" textAlign="Center" visible="false" />
+						</Column>
+							<Column width='0rem' >
+						<Label text="Service code" design="Bold" textAlign="Center" visible="false" />
+						</Column>
+				 
+				</columns>  
+		 	</Table>
+		 	 	<Table  mode="MultiSelect" 	class="sapUiSizeCompact" id="idhub" updateFinished="hubselect" visible="false"  > 
+	           	<columns>
+	           			<Column width='0rem' >
+						<Label text="S.NO" design="Bold" textAlign="Center" visible="false"/>
+						</Column>
+						<Column width='7rem' >
+						<Label text="Service Name" design="Bold" textAlign="Center"/>
+						</Column>
+					       
+						<Column 
+						width="2rem"
+						hAlign="Center"
+						demandPopin="true" >
+						<Label text="Quantity" design="Bold" change="pricecalc"/>
+						</Column>
+					 
+						<Column
+						width="4rem"
+						demandPopin="true" hAlign="Center">
+						<Label text="Item Price" design="Bold" />
+						</Column>
+						
+<!--						<Column
+						minScreenWidth="Small"
+						demandPopin="true" hAlign="Center">
+						<Label text="Total" design="Bold" />
+						</Column> -->
+						
+							<Column
+						width="0rem"
+						demandPopin="true" hAlign="Center" visible="false">
+						<Label text="Itemno" design="Bold" visible="false" />
+						</Column> 
+							<Column width='0rem' visible="false" >
+						<Label text="Discount %" design="Bold" textAlign="Center" visible="false" />
+						</Column>
+							<Column width='0rem' >
+						<Label text="Service code" design="Bold" textAlign="Center" visible="false" />
+						</Column>
+					 
+				</columns>  
+	
+		 	</Table>
+			</IconTabFilter>
+				<IconTabFilter id="id_inq_items2" text="Port Charges" visible="false" key="portserv">
+		 	<Table  mode="MultiSelect"	class="sapUiSizeCompact" id="idTableMyOrdersLine1"> 
+		<headerToolbar>
+						<Toolbar>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://add" tooltip="add one more item" press="add_port" text="Add Port Services"/>
+								</Toolbar>
+									</headerToolbar>
+	           	<columns>
+						
+						<Column width='12rem' >
+						<Label text="Service Name" design="Bold" textAlign="Center"/>
+						</Column>
+			 
+						<Column
+						minScreenWidth="Small"
+						demandPopin="true" hAlign="Center">
+						<Label text="Price" design="Bold" />
+						</Column>
+						<Column
+						minScreenWidth="Small"
+						demandPopin="true" hAlign="Center">
+						<Label text="Remark" design="Bold" />
+						</Column>
+							<Column
+						minScreenWidth="Small"
+						width='0rem'
+						demandPopin="true" hAlign="Center" visible="false">
+						<Label text="Flag" design="Bold" visible="false" />
+						</Column>
+				 	<Column width='0rem' >
+						<Label text="Service code" design="Bold" textAlign="Center" visible="false" />
+						</Column>
+						<Column width='3rem' visible="false" >
+						<Label text="Sno" design="Bold" textAlign="Center" visible="false" />
+						</Column>
+							<Column width='0rem' >
+						<Label text="servicetype" design="Bold" textAlign="Center" visible="false" />
+						</Column>
+				</columns>  
+		 	</Table>
+		 		<Table id="additemsport" class="sapUiSizeCompact" visible="false" mode="MultiSelect">
+			<headerToolbar>
+			<Toolbar>
+			<content>
+			<Title text="Additional Services" level="H3"/>
+			</content>
+			</Toolbar>
+			</headerToolbar>
+		     	<columns>
+						
+						<Column width='12rem' >
+						<Label text="Service Name" design="Bold" textAlign="Center"/>
+						</Column>
+			 
+						<Column
+						width="5rem"
+						minScreenWidth="Small"
+						demandPopin="true" hAlign="Center">
+						<Label text="Price" design="Bold" />
+						</Column>
+						<Column
+						width="0rem"
+						minScreenWidth="Small"
+						demandPopin="true" hAlign="Center">
+						<Label text="Remark" design="Bold" visible="false" />
+						</Column>
+							<Column
+						minScreenWidth="Small"
+						width='0rem'
+						demandPopin="true" hAlign="Center" visible="false">
+						<Label text="Flag" design="Bold" visible="false" />
+						</Column>
+				 	<Column width='0rem' visible="false" >
+						<Label text="Service code" design="Bold" textAlign="Center" visible="false" />
+						</Column>
+						<Column width='3rem' visible="false" >
+						<Label text="Sno" design="Bold" textAlign="Center" visible="false" />
+						</Column>
+								<Column
+						minScreenWidth="Small"
+						width='0rem'
+						demandPopin="true" hAlign="Center" visible="false">
+						<Label text="servicetype" design="Bold" textAlign="Center" visible="false" />
+						</Column>
+				</columns>  
+			</Table>
+			</IconTabFilter>
+			
+			<IconTabFilter id="id_inq_items3" text="Final Price" class="bgwhite" key="FinalPrice">
+		 <f:Form 	id="veform" 
+			editable="true" >
+			<f:layout>
+				<f:ResponsiveGridLayout
+				    labelSpanXL="2"
+					labelSpanL="2"
+					labelSpanM="4"
+					labelSpanS="4"
+					adjustLabelSpan="false"
+					emptySpanXL="2"
+					emptySpanL="2"
+					emptySpanM="1"
+					emptySpanS="1"
+					columnsXL="1"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						
+						<f:FormElement label="Estimated Cost" visible="false">
+							<f:fields>
+				<Input id ="ci_price" placeholder="Enter"  enabled="false" width="15rem" />
+			
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Discount %" visible="false">
+							<f:fields>
+				<Input id ="ci_discount" placeholder="Enter" type="Number" liveChange="ci_dislivechg" width="15rem"/>
+			
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement label="Final Price" visible="false">
+							<f:fields>
+				<Input id ="ci_fprice" placeholder="Enter" type="text" width="15rem" />
+			
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement label="Attach" id="ci_fileUploader2" >
+							<f:fields>
+				
+		<u:FileUploader name="myFileUpload" value="" placeholder="Choose" change="CI_attachment" id="ci_fileUploader1"  />
+			
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement label="Status">
+							<f:fields>
+				<!--<RadioButton groupName="GroupA" text="Approved" />
+			<RadioButton groupName="GroupA" text="Rejected" />
+				<RadioButton groupName="GroupA" text="InProgress" />-->
+				<RadioButtonGroup columns="4"  select="ci_radiobuttonselect" id="ci_rbgrp" selectedIndex="0" class="sapUiSmallMarginBottom" >
+				<buttons>
+				<!--	<RadioButton id="ci_RB0" text="New" />-->
+					<RadioButton id="ci_RB1" text="Approved" />
+					<RadioButton id="ci_RB2" text="Rejected"/>
+					<RadioButton id="ci_RB3" text="InProcess"/>
+				</buttons>
+			</RadioButtonGroup>
+			
+							</f:fields>
+						</f:FormElement>	
+						<f:FormElement label="Comments">
+							
+							<f:fields>
+				<TextArea id ="ci_Commnt" rows="5" width="15rem" />
+			
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		 <List id="existattach" headerText="Attachments" >
+		 		<items>
+			<StandardListItem id="agat1"
+				title="" press="downloads" type="Active" />
+				<StandardListItem id="agat2" type="Active"
+				title="" press="downloads1" />
+				<StandardListItem id="agat3" type="Active"
+				title="" press="downloads2" />
+				<StandardListItem id="agat4" type="Active"
+				title="" press="downloads3" />
+				<StandardListItem id="agat5" type="Active"
+				title="" press="downloads4" />
+		</items>
+		 </List>
+			<List id="ci_attlist1" mode="Delete" delete="ci_handleDelete" itemPress="downListPress"	enableBusyIndicator="true"
+		headerText="Attachments" growing="true"  >
+	
+	</List>	
+			</IconTabFilter>
+		 
+		
+		</items>
+		
+	</IconTabBar>
+	
+	 </content>
+		 </Panel>
+	</l:SplitPane>
+	</l:PaneContainer>	
+
+	 
+	</l:PaneContainer>	
+	</l:ResponsiveSplitter>	
+				</content>
+			
+				</Panel>
+	 
+			
+
+</core:FragmentDefinition>

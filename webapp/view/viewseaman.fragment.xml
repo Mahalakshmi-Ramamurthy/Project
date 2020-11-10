@@ -1,0 +1,118 @@
+<core:FragmentDefinition 	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 
+	xmlns:semantic="sap.f.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:ui="sap.ui.table"
+xmlns:core="sap.ui.core"
+xmlns:form="sap.ui.layout.form" 
+xmlns:fb="sap.ui.comp.filterbar"
+xmlns:l="sap.ui.layout"
+xmlns:u="sap.ui.unified"
+xmlns:uxap="sap.uxap"
+xmlns:tnt="sap.tnt"
+xmlns:viz="sap.viz.ui5.controls"
+xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+xmlns:viz.data="sap.viz.ui5.data"
+xmlns:ch="sap.suite.ui.microchart"
+xmlns:rules="sap.rules.ui"
+xmlns:f="sap.ui.layout.form" xmlns:vm="sap.ui.comp.variants"
+xmlns:m="sap.m" >
+	
+		 <Table id="idseaman" items="{/aData12}"  fixedLayout="false" busyIndicatorDelay="500" class="sapUiSizeCompact ">
+																	<!--	<headerToolbar>
+																			<Toolbar>
+																				<ToolbarSpacer/>
+																				<Button icon="sap-icon://add" tooltip="add one more item" press="seaman_add1"/>
+																			</Toolbar>
+																		</headerToolbar>-->
+																		<columns>
+																			<Column width="13rem">
+																				<Label text="Service Name" design="Bold"/>
+																			</Column>
+																			<Column>
+																				<Label text="Name" design="Bold"/>
+																			</Column>
+																			<Column>
+																				<Label text="Passport No" design="Bold"/>
+																			</Column>
+																			<Column>
+																				<Label text="Nationality" design="Bold"/>
+																			</Column>
+																			<Column visible="false">
+																				<Label text="Date of Issue" design="Bold"/>
+																			</Column>
+																			<Column visible="false">
+																				<Label text="Place of Issue" design="Bold"/>
+																			</Column>
+																			<Column visible="false">
+																				<Label text="Passport Expiry Date" design="Bold"/>
+																			</Column>
+																			<Column visible="false">
+																				<Label text="Seaman Book No" design="Bold"/>
+																			</Column>
+																			<Column visible="false">
+																				<Label text="Gender" design="Bold"/>
+																			</Column>
+																			<Column visible="false">
+																				<Label text="Hotel Required" design="Bold"/>
+																			</Column>
+																			<Column >
+																				<Label text="Joiner/Offsighner/Attendee" design="Bold" width="8rem"/>
+																			</Column>
+																			<Column >
+																				<Label text="Attachment" design="Bold"/>
+																			</Column>
+																				<Column >
+																				<Label text="Upload" design="Bold"/>
+																			</Column>
+																			<Column >
+																				<Label text="Comments" design="Bold"/>
+																			</Column>
+																			<Column >
+																				<Label text="" visible="false" design="Bold"/>
+																			</Column>
+																			<Column >
+																				<Label text="" visible="false" design="Bold"/>
+																			</Column>
+																				<Column >
+																				<Label text="" visible="false" design="Bold"/>
+																			</Column>
+																		</columns>
+																		<items>
+																			<ColumnListItem id="idseamanlist">
+																				<cells>
+																				<Input value="{Empty1}" placeholder="Enter" width="12rem"/>
+																					<Input value="{Empty2}" placeholder="Enter" width="7rem"/>
+																					 <ComboBox items="{/seamandata2}"  width="8rem" value="{Empty3}">
+																						<core:Item  text="{pass12}" key="{pass12}" />
+																					
+																						</ComboBox>
+																				<!--	<Input value="{Empty3}" placeholder="Enter" width="7rem"/>-->
+																					<Input value="{Empty4}" placeholder="Enter" width="7rem"/>
+																					<DateTimePicker visible="false" id="DOI1" value="{Empty5}" width="5rem" valueFormat="yyyy-MM-ddTHH:mm:SS" change="handleChange"/>
+																					<Input  visible="false" value="{Empty6}" placeholder="Enter" width="5rem"/>
+																					<DateTimePicker visible="false" id="PED1" value="{Empty7}" width="5rem" valueFormat="yyyy-MM-ddTHH:mm:SS" change="handleChange"/>
+																					<Input visible="false" value="{Empty8}" placeholder="Enter" width="5rem"/>
+																				 	<Input visible="false" value="{Empty11}" placeholder="Enter" width="5rem"/>
+																					<ComboBox visible="false" value="{Empty10}" placeholder="Select" width="6rem">
+																						<core:Item  text="Yes" />
+																						<core:Item  text="No" />
+																						</ComboBox>
+																					 <ComboBox value="{Empty11}" placeholder="Select" width="8rem">
+																						<core:Item  text="Joiner" />
+																						<core:Item  text="Offsighner" />
+																						<core:Item  text="Attendee" />
+																						</ComboBox>
+																						<Link id="filetext1" text="{Empty15}" width="8rem" press="attachdownloadinq"/>
+																					<u:FileUploader id="fu11" value="{Empty12}" width="8rem" buttonText="Upload" name="myFileUpload" placeholder="Choose" change = "seamanattachinq"/>
+																					<Input value="{Empty13}" placeholder="Enter" width="7rem"/>
+																					<Input value="{Empty14}" placeholder="Enter" visible="false"/>
+																					<Input value="{Empty16}" placeholder="Enter" visible="false" id="base"/>
+																					<Input value="{Empty17}" placeholder="Enter" visible="false" id="uploadbase"/>
+																				</cells>
+																			</ColumnListItem>
+																		</items>
+																	</Table>
+	
+</core:FragmentDefinition>

@@ -1,0 +1,319 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form" xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified">
+ 	<Panel id="vesselexpensepanel" width="auto" class="sapUiSizeCompact" accessibleRole="Region">
+	<headerToolbar>
+			<Toolbar height="2rem">
+				<Title  id="vesselexpensetitle" text="Item List"  class="bold" />
+				<ToolbarSpacer />
+				<ToolbarSpacer />
+					<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+ 				<ToolbarSpacer />
+				
+				    
+		    	
+			 <SearchField width="12rem" placeholder="Search" liveChange="onSearch3" />
+				 	<Button icon="sap-icon://refresh" tooltip="Refresh" press="refresh3"/>
+					<Button icon="sap-icon://filter" tooltip="Filter" press="filterCategories3"/>
+				
+				<Button
+							icon="sap-icon://sort"
+							tooltip="Sort Categories"
+							press="sortfn3"/>
+							
+				
+			</Toolbar>
+		</headerToolbar>
+		<content>
+		<l:ResponsiveSplitter>
+		<l:PaneContainer>
+			<l:SplitPane requiredParentWidth="400" id="default1">
+				<Panel height="100%">
+						<Table id="idOperationTabel3" items="{/MyInvoiceList}" fixedLayout="false"  
+						selectionChange="vesselexpensespress" mode='SingleSelectMaster' updateFinished='bindrtable'> 
+	
+						<columns>
+						
+							 <Column  
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+							<Label text="Customer ID" design="Bold" />
+							</Column>
+							
+							<Column hAlign="Center" 
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+						 	<Label text="Order ID" design="Bold" />
+							</Column>
+						
+								<Column  hAlign="Center"
+							    minScreenWidth="Small"
+							 	demandPopin="true"  >
+								<Label text="Invoice Number" design="Bold" />
+							</Column>
+							 	
+							<Column  hAlign="Center"
+							    minScreenWidth="Small"
+							 	demandPopin="true" 
+							 	>
+							<Label text="Date" design="Bold" />
+							</Column>
+							   
+							<Column  hAlign="Center"
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+								
+							<Label text="Amount" design="Bold" />
+							</Column>
+								<Column  hAlign="Center"
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+								
+							<Label text="Status" design="Bold" />
+							</Column>
+							
+						
+							
+							</columns>
+							
+							<items>
+						<ColumnListItem id="idOperIncrementTable3" type="Navigation"  >
+							<cells> 
+							     <Link text="{CUSTOMERID}" press="handleport" />
+							     <Text text="{ORDERID}"/>
+							      <Text text="{INVOICEID}" class="bold"  />
+									<Text text="{parts:[{path: 'INVOICEDATE'}], formatter:'.formatdates'}"  />
+								  	<Text text="{NETVALUE}"  />
+								  <ObjectNumber number="{INVOICESTATUS}" state="{parts:[{path: 'INVOICESTATUS'}], formatter:'.status'}"   />
+								 
+								 </cells>
+						</ColumnListItem>
+					</items>
+					</Table>	
+						<layoutData><l:SplitterLayoutData size="680px" /></layoutData>
+				</Panel>
+			</l:SplitPane>
+		
+				
+				<l:SplitPane >
+					<Panel>
+						
+					<!--	<l:FixFlex   class="sapUisizecompact bg">
+				
+		<l:fixContent>-->
+			<content>
+			<HBox class="sapUiSizeCompact bg" visible='false'>
+		  <form:SimpleForm id="SSform15"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title=""
+			labelSpanXL="2"
+			labelSpanL="2"
+			labelSpanM="2"
+			labelSpanS="2"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="0"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false"
+			class="sapUiSizeCompact">
+		  	
+			<form:content>
+				<HBox>
+	 	<FlexBox
+				
+					alignItems="Start"
+					justifyContent="Start"
+					>
+	 			<items>
+	 		<VBox class="sapUiLargeMarginEnd">
+	 				<Label   id="expensecustomername"  text=""   class="name sapUiTinyMarginBottom" />
+	 					<ObjectAttribute   title="" text=""   />
+	 		<ObjectAttribute title="Customer ID" id="expensecustomerid" text="" class="datebold sapUiTinyMarginBottom" active="true" />
+	 			<ObjectAttribute title="IMO Number" id="expenseimo" text="" class="datebold sapUiTinyMarginBottom" active="true" />
+	 				<ObjectAttribute title="Inquiry Number" id="expenseinquiry" text="" class="datebold sapUiTinyMarginBottom" active="true" />
+
+		 
+		
+		
+			</VBox>
+		</items>
+				</FlexBox>
+	   
+    
+      
+					<FlexBox
+					class="sapUiSmallMarginBegin"
+					alignItems="Start"
+					justifyContent="Start">
+      			<items>
+      				<VBox class="sapUiSmallMarginBegin">
+      				<ObjectAttribute   title="Vessel Name" id="expensevesselname" text="IMO287631" class="sapUiTinyMarginBottom"  active="true"/>
+						<ObjectAttribute   title="Port Name" id="expenseportname" text="" class="sapUiTinyMarginBottom" active="true" />
+							<ObjectAttribute   title="D/A Number" id="expensedanumber" text="" class="sapUiTinyMarginBottom" active="true" />
+							
+				<ObjectStatus id="expensestatus" title="Status" text="" state="Warning" class="sapUiTinyMarginBottom"   />
+			
+					
+					
+				
+	</VBox>
+		
+		</items>
+				</FlexBox>
+				
+	    </HBox>
+	    	</form:content>
+	    	
+	    	 </form:SimpleForm>
+	    	 </HBox>
+						
+				
+				<IconTabBar select="vesseltabexpensepress">
+		
+	
+		<items>		
+		<IconTabFilter 	text="Order Details">
+			
+		 	<Table id="idOrderDetailsvsl" fixedLayout="false" class="sapFSemanticPageAlignContent"  > 
+				<headerToolbar>
+			 
+				</headerToolbar>
+					<columns >
+				 		<Column minScreenWidth="Small"
+							 	demandPopin="true" >
+							<Label text="Item No" design="Bold"  />
+							</Column>
+					 		<Column >
+								<Label text="Inquiry Number" design="Bold" />
+							</Column>
+						<!--	<Column 
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+							<Label text="Service Type" design="Bold" />
+							</Column>-->
+							<Column  hAlign="Center"
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+							 <Label text="Quantity" design="Bold" />
+							 </Column>
+							 <Column  hAlign="Center"
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+							 <Label text="Amount" design="Bold" />
+							 </Column>
+							    
+					</columns>
+							
+						 
+					</Table>
+		</IconTabFilter> 
+		
+		
+		<IconTabFilter 
+				text="Vessel Expenses">
+		<f:Form 	id="veform1" 
+			editable="false" >
+			<f:layout>
+				<f:ResponsiveGridLayout
+				   	labelSpanXL="2"
+					labelSpanL="2"
+					labelSpanM="6"
+					labelSpanS="4"
+					adjustLabelSpan="false"
+					emptySpanXL="2"
+					emptySpanL="2"
+					emptySpanM="1"
+					emptySpanS="1"
+					columnsXL="1"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="true" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						
+						<f:FormElement label="Customer Invoice Number">
+							<f:fields>
+				<Input id ="Customer" placeholder="Enter" />
+			
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Invoice Date">
+							<f:fields>
+				<DatePicker
+			id="DP1"
+			placeholder="Enter Date ..."
+			change="handleChange"
+			class="sapUiSmallMarginBottom"/>
+			
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement label="Arrival Date">
+							<f:fields>
+				<DatePicker
+			id="DP2"
+			placeholder="Enter Date ..."
+			change="handleChange"
+			class="sapUiSmallMarginBottom"/>
+			
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement label="Attachment">
+							<f:fields>
+				<u:FileUploader
+			id="fileUploader"
+			uploadComplete="handleUploadComplete"/>
+	
+			
+							</f:fields>
+						</f:FormElement>
+							<f:FormElement label="">
+							<f:fields>
+				<Button
+			text="Upload File"
+			press="handleUploadPress"/>			
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Status">
+							<f:fields>
+				<RadioButton groupName="GroupA" text="Open" />
+			<RadioButton groupName="GroupA" text="Released" />
+			
+			
+							</f:fields>
+						</f:FormElement>	
+						<f:FormElement label="Comments">
+							
+							<f:fields>
+				<TextArea id ="Com1" rows="5" />
+			
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		</IconTabFilter>
+		
+		</items>
+		</IconTabBar>
+		</content>
+		
+		</Panel>
+				</l:SplitPane>
+			
+		</l:PaneContainer>
+	</l:ResponsiveSplitter>
+		</content>
+			
+				</Panel>
+</core:FragmentDefinition>

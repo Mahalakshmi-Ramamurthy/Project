@@ -1,0 +1,85 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" >
+    <Dialog title ="Filters"  class="sapUiSizeCompact"> 
+   <f:Form id="verform"
+			editable="true" class="sapUiContentPadding"  >
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="4"
+					labelSpanL="4"
+					labelSpanM="12"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="0"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="2"
+					columnsM="2"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					
+					<f:formElements>
+						<f:FormElement label="Vessel Name" >
+							<f:fields>
+				          		
+	<ComboBox id="ip22b" placeholder="Select" />		
+				          		
+							</f:fields>
+					</f:FormElement>
+					
+					<f:FormElement label="D/A Number" >
+							<f:fields>
+				            <ComboBox id="ip21b" placeholder="Select" />
+							</f:fields>
+					</f:FormElement>
+						
+					<f:FormElement label="Port Name">
+							<f:fields>
+				           <ComboBox id="ip2b" placeholder="Select"   >
+						<items>
+               <core:Item key="t0" text="Ras Laffan Port" />
+               <core:Item key="t1" text="Al Rayyan Terminal" />
+               <core:Item key="t11" text="Al Shaheen Terminal" />
+               <core:Item key="t2" text="Halul Port" />     
+               <core:Item key="t3" text="Mesaieed Port" />  
+               <core:Item key="t4" text="Hamad Port" />  
+               <core:Item key="t5" text="Al Ruwais Port" />  
+               <core:Item key="t6" text="Doha Port" />  
+               <core:Item key="t7" text="Heli Port" />  
+               </items>
+               </ComboBox>
+			                </f:fields>
+					</f:FormElement>
+					
+						<f:FormElement label="Status">
+							<f:fields>
+				           <ComboBox id="ip3b" placeholder="Select"   >
+						<items>
+               <core:Item key="t0" text="Open" />
+               <core:Item key="t1" text="Released" />
+               
+               </items>
+               </ComboBox>
+			                </f:fields>
+					</f:FormElement>
+						
+					 
+					
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		
+		 <buttons>
+   
+   <Button text = "Cancel" press = "vercancelDialog" type = "Reject" />
+   <Button text = "Ok" press = "verokdialog" type = "Accept" />
+   </buttons>
+   
+	 
+     </Dialog>
+</core:FragmentDefinition>

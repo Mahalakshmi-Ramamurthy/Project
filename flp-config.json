@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "zqgtcagentportal",
+        "description": "Agent Portal QGTC",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#AgentPortal-Display",
+        "navigationComponentName": "AgentPortal_Testing.AgentPortal_Testing",
+        "intentSemanticObject": "AgentPortal",
+        "intentAction": "Display",
+        "html5ApplicationName": "zqgtcagentportal",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "b966bbec-7b10-48fd-b640-d8246df2acec"
+        ],
+        "contentPackages": [
+            "ff8824d8-3cb3-4832-a67e-e47a6844cdfd"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "QGTC Agent Portal",
+        "subtitle": "AgentPortal",
+        "searchKeywords": "QGTC Agent Portal,AgentPortal",
+        "displayIconUrl": "sap-icon://approvals",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}

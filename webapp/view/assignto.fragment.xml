@@ -1,0 +1,99 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" >
+    <Dialog title ="Assign To"  class="sapUiSizeCompact"> 
+   <!--<f:Form id="assigntoform"
+			editable="true" class="sapUiContentPadding"  >
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="4"
+					labelSpanL="4"
+					labelSpanM="12"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="0"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="2"
+					columnsM="2"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					
+					<f:formElements>
+						<f:FormElement label="Customer ID" >
+							<f:fields>
+				          		
+	               <Input id="c1" placeholder="Enter" />		
+				          		
+							</f:fields>
+					</f:FormElement>
+					
+					<f:FormElement label="Customer Name" >
+							<f:fields>
+				            <Input id="c2" placeholder="Enter" />
+							</f:fields>
+					</f:FormElement>
+						
+					<f:FormElement label="Email ID">
+							<f:fields>
+				           <Input id="c3" placeholder="Enter"   />
+
+			                </f:fields>
+					</f:FormElement>
+						
+					 
+					
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>-->
+		<Table id="idAssignTable" items="{/assign1}"
+		inset="false">
+		 
+		<columns>
+			<Column
+				width="18em">
+				<Text text="Services" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Roles" />
+			</Column> 
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Service type" />
+			</Column> 
+		</columns>
+		<items>
+			<ColumnListItem     >
+							<cells> 
+							     <Text text="{ServiceName1}" class="bold" width="100%" />
+							     <ComboBox placeholder="Select"   width="50%"  items="{/assign2}" selectionChange = "roleassign" value="{assignval}" >
+							 	<core:Item key="{role}"  text="{role}" />
+							 	
+							 </ComboBox>
+							 <Text text="{servtyp1}" class="bold" width="100%" />
+								  
+								 </cells>
+						</ColumnListItem>
+			
+		</items>
+		 
+	</Table>
+		
+		
+		
+		 <buttons>
+   
+   <Button text = "Cancel" press = "assigncancelDialog" type = "Reject" />
+   <Button text = "Assign to" press = "assingtopost" type = "Accept" />
+   </buttons>
+   
+	 
+     </Dialog>
+</core:FragmentDefinition>

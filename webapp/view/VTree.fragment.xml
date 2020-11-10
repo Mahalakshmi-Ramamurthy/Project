@@ -1,0 +1,29 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:ui="sap.ui.table"
+	xmlns:core="sap.ui.core"
+	xmlns:custom="ship.ship.views">
+	 
+ 		<List
+		id="listtree" 
+		items="{
+			path: '/sortodata',
+			sorter: {
+				path: 'HandlingUnit'
+			}
+		}">
+		<items>
+		<ObjectListItem  type="Active"
+		 				press="handlesort"
+		 				title="{HandlingUnit}">
+						<attributes> 
+						<ObjectAttribute text="{HandlingUnit}" visible="false"></ObjectAttribute>
+		 				</attributes>
+
+					</ObjectListItem>
+		</items>
+	</List>
+ 	 
+ 	 
+	 
+</core:FragmentDefinition>

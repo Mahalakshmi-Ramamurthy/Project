@@ -1,0 +1,73 @@
+{
+  "routes": [
+    {
+      "path": "/webapp/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/webapp/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+        "path": "/services/userapi",
+        "target": {
+            "type": "service",
+            "name": "userapi"
+        }
+    },
+    {
+        "path": "/services/userapi",
+        "target": {
+            "type": "service",
+            "name": "userapi"
+        }
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    } ,
+    {
+      "path": "/Customer_Portal/NAC/AgentPortal.xsodata/",
+      "target": {
+        "type": "destination",
+        "name": "Agent_Portal"
+      },
+      "description": "Agent_Portal"
+    }, 
+     {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "Fiori_dev",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "sap odata"
+    } 
+  ],
+  "welcomeFile": "/webapp/test/flpSandbox.html",
+  "sendWelcomeFileRedirect": true
+}

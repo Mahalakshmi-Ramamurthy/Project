@@ -1,0 +1,51 @@
+<core:FragmentDefinition 	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 
+	xmlns:semantic="sap.f.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:ui="sap.ui.table"
+xmlns:core="sap.ui.core"
+xmlns:form="sap.ui.layout.form" 
+xmlns:fb="sap.ui.comp.filterbar"
+xmlns:l="sap.ui.layout"
+xmlns:u="sap.ui.unified"
+xmlns:uxap="sap.uxap"
+xmlns:tnt="sap.tnt"
+xmlns:viz="sap.viz.ui5.controls"
+xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+xmlns:viz.data="sap.viz.ui5.data"
+xmlns:ch="sap.suite.ui.microchart"
+xmlns:rules="sap.rules.ui"
+xmlns:f="sap.ui.layout.form" xmlns:vm="sap.ui.comp.variants"
+xmlns:m="sap.m" >
+	
+		 <Table id="idseaman" items="{/aData12}"  fixedLayout="false" busyIndicatorDelay="500" class="sapUiSizeCompact ">
+																	<!--	<headerToolbar>
+																			<Toolbar>
+																				<ToolbarSpacer/>
+																				<Button icon="sap-icon://add" tooltip="add one more item" press="seaman_add1"/>
+																			</Toolbar>
+																		</headerToolbar>-->
+																		<columns>
+																			<Column width="13rem">
+																				<Label text="Service Name" design="Bold"/>
+																			</Column>
+																			<Column>
+																				<Label text="Name" design="Bold"/>
+																			</Column>
+																			
+																		</columns>
+																		<items>
+																			<ColumnListItem id="idseamanlist">
+																				<cells>
+																				<Link
+																					text=""
+																					press="handleLinkPress" press="vsudownload" />
+																					<u:FileUploader id="upload1"  width="8rem" buttonText="Upload"  placeholder="Choose" />
+																				
+																				</cells>
+																			</ColumnListItem>
+																		</items>
+																	</Table>
+	
+</core:FragmentDefinition>

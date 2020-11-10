@@ -1,0 +1,42 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+    	<Table id="idOperationTabladd" items="{/MyFleet}" fixedLayout="false" class="sapFSemanticPageAlignContent" mode="MultiSelect"  > 
+				<headerToolbar>
+			 
+				</headerToolbar>
+					<columns >
+				 		<Column minScreenWidth="Small"
+							 	demandPopin="true" >
+							<Label text="IMO" design="Bold"  />
+							</Column>
+					 		<Column >
+								<Label text="Vessel Name" design="Bold" />
+							</Column>
+							<Column 
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+							<Label text="DA Number" design="Bold" />
+							</Column>
+							<Column  hAlign="Center"
+							    minScreenWidth="Small"
+							 	 demandPopin="true">
+							 <Label text="ATA" design="Bold" />
+							 </Column>
+							    
+					</columns>
+							
+							<items>
+						<ColumnListItem id="idOperIncrementTable1" type="Active" press="onmyfleettablePress"   >
+							<cells> 
+							     <Text text="{IMO}" /> 
+							     <Text text="{VESSELNAME}" class="bold" />
+							      <Text text="" />
+								 <Text text=""/>
+								  </cells>
+						</ColumnListItem>
+					</items>
+					</Table>
+  
+		
+
+</core:FragmentDefinition>

@@ -1,0 +1,410 @@
+div#__filter7-text {
+   
+   margin-right: 55px !important;
+ 
+}
+.sapUiSizeCompact .sapMTB.sapMTBHeader-CTX {
+     height: 2rem !important; 
+}
+div#application-AgentPortal-Display-component---worklist--idIconTabBarMainnotif--header {
+width: 100% !important;
+border-bottom-width: 10px !important;
+}
+div#__filter6 {
+margin-left: -46px !important;
+}
+.sapMITBContent
+{
+	padding: 0.5rem !important;
+}
+.sapUiTableHSb {
+   
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: auto;
+   
+}
+	.clrnumb{
+	color: #3960bb!important
+}
+		.sapMITBFilter .sapMITBText{
+		    width: 6.3rem!important;
+		}
+		.bol{
+		font-weight: bold !important;
+		}
+		.sapFDynamicPage-Std-Tablet .sapFDynamicPageContentFitContainer {
+    padding: 0rem 0rem 0 0rem !important;
+}
+div#application-MyFleet-Display-component---Vessel--page-page-content {
+    padding: 1px !important;
+}
+.sapMITBTextOnly .sapMITBFilter {
+    padding: 0px 2rem !important;
+}
+	#application-MyFleet-display-component---Vessel--page-pageHeader
+		{
+			box-shadow : none !important;
+			}
+			.sapFDynamicPageHeader.sapFDynamicPageHeaderWithContent {
+   	box-shadow : none !important;
+}
+header#application-MyFleet-Display-component---Vessel--page-pageHeader {
+    box-shadow: none !important;
+}
+/*------Customer orders----*/
+/*.sapUiFormM:not(.sapUiFormEdit)>.sapUiFormResGrid>div:not(.sapMTB) {
+    padding-bottom: 0.75rem;
+    width: 155% !important;
+}*/
+/*div#__container20--Grid {
+    width: 625px !important;
+}
+.sapMList.sapUiContentPadding {
+    padding: 0rem !important;
+    box-sizing: border-box;
+}*/
+/*-----------*/
+.sapMPanelContent:not(.sapMPanelBGTransparent) {
+    border-bottom: 1px solid #cccccc;
+    
+}
+.sapMObjectNumberText {
+    display: inline-block;
+    white-space: pre-wrap !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    vertical-align: middle;
+    font-size: 0.875rem;
+}
+
+/*div#application-AgentPortal-Display-component---worklist--RidIconTabBarFiori2-content {
+    width: 637px !important;
+}*/
+/*div#__container12--Grid {
+    width: 637px !important;
+}*/
+.sapMLIB.sapMLIBSelected {
+  background: #93bfeb!important;
+}
+
+.sapMListTbl .sapMTableTH{
+background: #5899DA!important;
+}
+.sapMInputBaseContentWrapper
+{
+	width:80% !important;
+}
+.sapTntInfoLabel.sapTntInfoLabelDisplayOnly .sapTntInfoLabelInner {
+    font-size: 1em !important;
+    line-height: 1rem !important;
+}
+
+/*.sapMITBTextOnly .sapMITBFilterDefault.sapMITBSelected>.sapMITBText {
+    font-size: 1.8rem !important;
+    color: #ffffff;
+     text-shadow: 0 0 0.125rem #fafafa;
+    font-weight: bold!important	;
+}
+
+.sapMITBFilterDefault {
+background-color: #427cac;	
+}*/
+.sapMObjectAttributeActive .sapMObjectAttributeTitle, .sapMObjectAttributeActive .sapMObjectAttributeText {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: unset !important;
+    max-width: 100% !important;
+    vertical-align: middle;
+    display: inline-block;
+}
+.sapMObjectAttributeActive .sapMObjectAttributeTitle
+{
+	
+	max-width:100% !important;
+}
+__filter0-text .sapMITBText{
+	    font-size: 1.5rem!important;
+}
+.sapMITBTextOnly .sapMITBFilterDefault.sapMITBSelected>.sapMITBText {
+       font-weight: bold!important;
+   /* width: 8rem!important;*/
+}
+
+.sapMITBTextOnly .sapMITBFilterDefault>.sapMITBText{
+     font-weight: bold!important;
+    color: #346187!important; 
+  /*  width: 8rem!important;*/
+}
+	.sapMITBFilter .sapMITBText{
+		      
+    font-size: 1rem;  
+    color: #058afa; 
+		}
+
+ .sapMListTbl .sapMLabel{
+white-space: normal!important;
+}
+
+.sapMPanelContent {
+    padding: 0rem 0rem 0rem 0rem!important;
+    box-sizing: border-box;
+    overflow: auto;
+    white-space: normal;
+}
+
+.sapFSemanticPage
+{
+	overflow:visible !important;
+}
+
+.sapMGrowingListTrigger{
+	display: none!important;
+}
+
+div#__container33--Grid {
+	width: 418px !important;
+}
+
+/*   Header Title  */
+div#application-AgentPortal-Display-component---worklist--page-pageTitle {
+    display: none !important;
+}
+
+/* Customer Object Header */
+
+div#__hbox8 {
+	  background: aliceblue !important;
+}
+
+div#__hbox10 {
+	 background: aliceblue !important;
+}
+
+/* Header of Agent Portal Customer , CustomerOrder ,Customer Inquiries  */
+
+div#application-AgentPortal-Display-component---worklist--idIconTabBarMainnotif--header-scrollContainer {
+    margin-top: -31px !important;
+}
+
+/* Customer My Fleet Icon Tab Bar */
+div#application-AgentPortal-Display-component---worklist--idIconTabBarnotif--header-scrollContainer {
+    margin-top: -30px !important;
+}
+
+/* Customer Object Header */
+
+/*div#application-AgentPortal-Display-component---worklist--SSform1 {
+    margin-top: -47px !important;
+}*/
+
+div#application-AgentPortal-Display-component---worklist--idIconTabBarMainnotif-content {
+    margin-top: 4px !important;
+}
+
+/* Customer Form In Vessel History */
+
+/*div#__container33--Grid {
+    width: 171% !important;
+}
+
+@media only screen and (max-width: 600px) {
+div#__container33--Grid {
+    margin-left: -40px!important;
+    width: 259%!important;
+    display: inline-grid!important;
+}
+}*/
+
+/* Customer Object Attribute*/
+
+div#application-AgentPortal-Display-component---worklist--idIconTabBarMainnotif-content {
+    background-color: #eff4f9!important;
+    border-bottom: 0.125rem solid #eff4f9!important;
+}
+
+header#application-AgentPortal-Display-component---worklist--page-pageHeader {
+    box-shadow: 0 0.125rem 0 0 #eff4f9, inset 0 -0.125rem 0 0 #eff4f9 !important;
+}
+
+/*Space between Table and Object Attribute in Customer */
+
+div#application-AgentPortal-Display-component---worklist--page-page-content {
+    padding: 1px !important;
+}
+
+div#application-AgentPortal-Display-component---worklist--page-page-contentFitContainer {
+    padding: 1px !important;
+}
+
+/* MyFleet Radio Button */
+
+div#__button28 {
+    margin-left: 121px !important;
+}
+
+div#__button29 {
+    margin-left: 108px !important;
+}
+
+/*  BreadCrumbs Vessel List */
+
+a#application-AgentPortal-Display-component---worklist--Vessellist {
+    color: black !important;
+    pointer-events: none !important;
+}
+
+/*  BreadCrumbs Add Vessel */
+
+a#application-AgentPortal-Display-component---worklist--linkid21 {
+    color: black !important;
+    pointer-events: none !important;
+}
+
+/*  BreadCrumbs Vessel History */
+
+a#application-AgentPortal-Display-component---worklist--Vessellistsof {
+    color: black;
+}
+
+/* Vessel History Table - splitter 1 */
+
+table#application-AgentPortal-Display-component---worklist--idOperationTabel2-listUl {
+    margin-top: -50px !important;
+}
+
+/* Vessel History Table - splitter 2 */
+
+section#__panel7 {
+    margin-top: -12px !important;
+}
+
+/* Vessel History border */
+
+.sapMTBStandard {
+    border-bottom: 0px solid #cccccc !important;
+}
+
+/* Vessel History Splitter */
+
+
+
+
+
+/* Vessel Expense */
+
+/*section#__splitter10-content-0 {
+    width: 743px !important;
+}*/
+
+/* Customer Inquiries Item List Title Responsive */
+@media only screen and (max-width: 600px) {
+span#application-AgentPortal-Display-component---worklist--id_inq-inner {
+    margin-left: 14px!important;
+}
+}
+
+/* Customer Inquiries */
+
+.sapMListTbl .sapMObjectAttributeActive .sapMText, .sapMObjectAttributeActive .sapMText, .sapMObjectAttributeActive .sapMObjectAttributeText {
+    color: #000000 !important;
+    pointer-events: none!important;
+    font-weight:bold !important;
+}
+/*#__splitter2-content-0
+{
+width:215px !important;
+}
+#__splitter1-content-0
+{
+	width:242px !important;
+}
+#__splitter2-content-1
+{
+	width: 969px !important;
+}
+#__splitter1-content-1
+{
+	width: 750px !important;
+}*/
+
+/* Customer Inquiries Intial Table Panel */
+
+section#application-AgentPortal-Display-component---worklist--CustomerInquiriesPanel {
+   
+    background: white !important;
+}
+
+/*   Customer Inquiries Table  Panel */
+
+section#application-AgentPortal-Display-component---worklist--CustomerInquiriesPanel {
+    margin: -59px !important;
+    margin-top: 1px !important;
+}
+/* customer Inquiries table wrap text */
+
+/* .sapMObjectNumberText{
+	white-space: pre-wrap !important;
+}*/
+
+/* Customer Inquiries Object Header */
+
+div#__hbox4 {
+    background: aliceblue !important;
+}
+
+/* Customer Inquiries Object Header*/ 
+
+div#__hbox1 {
+    background: aliceblue !important;
+}
+
+/* Customer Order Table Panel */
+
+section#application-AgentPortal-Display-component---worklist--customerorder {
+    background: white !important;
+    margin: -60px !important;
+    margin-top: 1px!important;
+}
+
+/* Customer Order Object Header  */
+
+div#__hbox6 {
+    background: aliceblue !important;
+}
+
+
+/* Customer Order Form  */
+
+
+div#__container22--Grid {
+   /* width: 130% !important;*/
+}
+
+@media only screen and (max-width: 600px) {
+    div#__container22--Grid {
+    width: 148% !important;
+}
+}
+@media only screen and (max-width: 600px) {
+
+ div#application-AgentPortal-Display-component---worklist--RidIconTabBarFiori2-content {
+   width: 493px;
+margin-left: -20px;
+}
+div#__container21--Grid {
+   margin-left: -95px;
+}
+.sapMFlexBoxWrapNoWrap {
+    
+    flex-wrap: wrap !important;
+}
+div#application-AgentPortal-Display-component---worklist--ci_rbgrp
+{
+	display:block !important;
+}
+ div#application-AgentPortal-Display-component---worklist--id_inq {
+    display: none !important;
+}
+ }

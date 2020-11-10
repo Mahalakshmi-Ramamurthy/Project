@@ -1,0 +1,63 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" >
+    <Dialog title ="Filters"  class="sapUiSizeCompact"> 
+   <f:Form id="veform11"
+			editable="true" class="sapUiContentPadding"  >
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="4"
+					labelSpanL="4"
+					labelSpanM="12"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="0"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="2"
+					columnsM="2"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					
+					<f:formElements>
+						<f:FormElement label="Vessel Name" >
+							<f:fields>
+				          		
+	<ComboBox id="ip22a" placeholder="Select" />		
+				          		
+							</f:fields>
+					</f:FormElement>
+					
+					<f:FormElement label="Customer ID" >
+							<f:fields>
+				            <ComboBox id="ip21a" placeholder="Select" />
+							</f:fields>
+					</f:FormElement>
+						
+					<f:FormElement label="IMO Numbers">
+							<f:fields>
+				           <ComboBox id="ip2aa" placeholder="Select"   />
+					
+              
+			                </f:fields>
+					</f:FormElement>
+						
+					 
+					
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		
+		 <buttons>
+   
+   <Button text = "Cancel" press = "soffcancelDialog" type = "Reject" />
+   <Button text = "Ok" press = "soffokdialog" type = "Accept" />
+   </buttons>
+   
+	 
+     </Dialog>
+</core:FragmentDefinition>
